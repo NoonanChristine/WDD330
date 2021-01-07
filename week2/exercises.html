@@ -3,7 +3,26 @@
     <meta charset="UTF-8"/>
     <title>Christine Noonan's WDD 330 Portfolio</title>
     <body>
-        <h3>Exercises</h3>
+        <h3>Exercises & Notes</h3>
         
+        <ul>
+            <li>use let if variable might be reassigned later in the program</li>
+            <li>best to always use "const" to avoid unexpected changes</li>
+        </ul>
+
+        <script>
+            const message = "hello world!";
+            console.log(message);
+
+            const nametest = "Christine";
+            //nametest = "Marie"; will be an error
+
+            const name = {value: "Christine"};
+            name.value = "Marie";
+            console.log(name); //name is now Marie
+
+
+        </script>
+
     </body>
 </html>
