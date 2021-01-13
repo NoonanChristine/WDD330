@@ -8,9 +8,133 @@
         <p>Note: to see output, please open developer tools.</p>
 
         <script>
-            
+            console.log(typeof []); //object
 
+            const heroes = [];
+            console.log(heroes[0]); //undefined
+
+            heroes [0]= 'Batman';
+            heroes [1] = 'Wonder Woman';
+            heroes [2] = 'Flash';
+            console.log(heroes);
+
+            const avengers = ['Captain America', 'Iron Man', 'Thor'];
+            console.log(avengers);
+
+            const mixedArray = [null, 1, [], 'two', true];
+            console.log(mixedArray);
+
+            console.log(delete avengers[1]);
+            console.log(avengers);
+
+            const [x,y] = [1,2];
+            console.log(x); //1
             
+            const avengersTwo = ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow'];
+            console.log(avengersTwo.length); //6
+            console.log(avengersTwo.length - 1); //5
+            console.log(avengersTwo[avengersTwo.length - 1]); //Black Widow
+            console.log(avengersTwo.length = 8);
+            console.log(avengersTwo); //with two empty slots
+            console.log(avengersTwo.length = 3);
+            console.log(avengersTwo); //made array shorter with just first three names
+            console.log(avengersTwo.pop());  //Thor
+            console.log(avengersTwo); //now only Captain America and Iron Man
+            console.log(avengersTwo.shift()); //Captain America
+            console.log(avengersTwo.push('Thor')); //2
+            console.log(avengersTwo.unshift('Captain America')); //3
+
+            console.log(avengersTwo.concat(['Hulk', 'Hawkeye', 'Black Widow']));
+            console.log(avengersTwo.join());
+            console.log(avengersTwo.join(' & ')); //adds & between each
+            //console.log(avengersTwo.slice(2,4));
+            //console.log(avengersTwo.splice(1, 0, 'Scarlet Witch'));
+            console.log(avengersTwo.reverse());
+            console.log(avengersTwo.sort());
+
+            console.log([5, 9, 10].sort()); //alphabetical
+
+            console.log(avengersTwo.indexOf('Iron Man'));
+            console.log(avengersTwo.indexOf('Hawkeye'));
+            console.log(avengersTwo.includes('Iron Man')); //true
+            console.log(avengersTwo.includes('Black Widow', 1)); //false
+
+            const coordinates = [[1, 3], [4,2]];
+            console.log(coordinates);
+
+            console.log(coordinates[0][0]); //1 first value of the first array
+            console.log(coordinates[1][0]); //4 first value of second array
+
+            const summer = ['June', 'July', 'Aug'];
+            const winter = ['Dec', 'Jan', 'Feb'];
+            const nested = [summer, winter];
+            console.log(nested);
+            console.log([...summer, ...winter]);
+
+            const list = new Set();
+            list.add(1);
+            console.log(list); //Set {1}
+            list.add(2).add(3).add(4);
+            console.log(list);
+            console.log(list.add(1)); //ignored. already there
+            const numbers = new Set([1,2,3]);
+            console.log(numbers);
+            
+            const moreNumbers = new Set([7,7,7,7,7,7,8,8,8,9,9]);
+            console.log(moreNumbers); //gets rid of duplicates
+
+            const letters = new Set('hello');
+            console.log(letters);
+            const words = new Set().add('the').add('quick').add('brown').add('fox');
+            console.log(words);
+
+            const arrays = new Set().add([1]).add([1]);
+            console.log(arrays);
+            console.log([1] === [1]); //false. considered different objects
+
+            const mixedTypes = new Set().add(2).add('2');
+            console.log(mixedTypes);
+
+            const jla = new Set().add('Superman').add('Batman').add('Wonder Woman');
+            console.log(jla);
+            console.log(jla.size); //3
+            console.log(jla.has('Superman'));
+            console.log(jla.has('Green Lantern')); //false
+            console.log(jla[0]);//no index notation so is undefined
+
+            console.log(jla.delete('Superman')); //returns true b/c was deleted
+            console.log(jla.delete('Flash')); //false b/c was not there
+            console.log(jla.clear); //now empty
+
+            const shoppingSet = new Set().add('Apples').add('Bananas').add('Beans');
+            console.log(shoppingSet);
+            const shoppingArray = [...shoppingSet];
+            console.log(shoppingArray); //can also do Array.from(shoppingSet) to do the same thing
+
+            const duplicate = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 9];
+            console.log(duplicate);
+            //const nonDuplicate = [...new Set(repeatedArray)];
+            //console.log(nonDuplicate);
+
+            let array = [1, 2, 3];
+            const strong = new Set().add(array);
+            array = null;
+            console.log(strong);
+
+            const weak = new WeakSet();
+            //weak.add(2);gives TypeError
+            //console.log(weak); 
+            const arrayTwo = [1,2,3];
+            weak.add(arrayTwo);
+            console.log(weak);
+            console.log(weak.has(arrayTwo)); //true
+            console.log(weak.delete(arrayTwo));
+            console.log(weak.has(arrayTwo)); //now false
+
+            //NEXT ON "Maps"
+
+
+
         </script>
 
     </body>
