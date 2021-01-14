@@ -131,8 +131,101 @@
             console.log(weak.delete(arrayTwo));
             console.log(weak.has(arrayTwo)); //now false
 
-            //NEXT ON "Maps"
+            const romanNumberals = new Map();
+            console.log(romanNumberals.set(1, 'I'));
+            console.log(romanNumberals.set(2, "II",).set(3, "III").set(4, "IV").set(5,"V"));
 
+            console.log(romanNumberals.get(4));
+            console.log(romanNumberals.has(5));
+            console.log(romanNumberals.has(10));
+
+            const mapHeroes = new Map([['Clark Kent', 'Superman'],['Bruce Wayne', 'Batman']]);
+            console.log(mapHeroes.size);//just 2
+            console.log(mapHeroes.delete('Clark Kent'));
+            console.log(mapHeroes.size);
+            console.log(mapHeroes.clear());
+            console.log(mapHeroes.size);
+
+            console.log([...romanNumberals]);
+            console.log(Array.from(romanNumberals));
+
+            const newWeak = new WeakMap();
+
+            const newAge = 12;
+            if (newAge < 18); {
+                console.log('Sorry, you are not old enough to play this game');
+            }
+
+            const n = 12;
+            if (n%2 === 0) {
+                console.log ('n is an even number');
+            } else {
+                console.log('n is an odd number');
+            }
+
+            const f = 5;
+            f%2 === 0 ? console.log('f is an even number') : console.log('f is an odd number');
+
+            console.log(`f is a${(f%2 === 0)? ' even' : 'n odd'} number`);
+
+            const number = 3;
+            if (number === 4) {
+                console.log('You rolled a four');
+            } else if (number === 5) {
+                console.log('You rolled a five');
+            } else if (number === 6) {
+                console.log("You rolled a six");
+            } else {
+                console.log("You rolled a number less than four");
+            }
+
+            let bottles = 10;
+            while (bottles > 0) {
+                console.log(`There were ${bottles} green bottles, hanging on a wall. And if one green bottle should accidentally fall, there'd be ${bottles-1} green bottles hanging on the wall`);
+                bottles--;
+            }
+
+            let newBottles = 10;
+            do {
+                console.log(`There were ${newBottles} green bottles, hanging on a wall. And if one green bottle should accidentally fall, there'd be ${newBottles-1} green bottles hanging on the wall`);
+                newBottles--;
+            } while (newBottles > 0)
+
+            for (let nextBottles = 10; nextBottles > 0; nextBottles--) {
+                console.log(`There were ${nextBottles} green bottles, hanging on a wall. And if one green bottle should accidentally fall, there'd be ${nextBottles-1} green bottles hanging on the wall`);
+            }
+            
+            let j = 1;
+            for(let i=1 ; j<13 ; i++) {
+                for(let i=1 ; j<13 ; j++) {
+                    console.log(`${j} multiplied by ${i} is ${i*j}`);
+                }
+            }
+
+            for(let i = 0, max=avengers.length; i < max; i++) {
+                console.log(avengers[i]);
+            }
+
+            for(const value of avengersTwo) {
+                console.log(value);
+            }
+
+            const newLetters = new Set('hello');
+            for(const letter of newLetters) {
+                console.log(letter);
+            }
+
+            for(const key of romanNumberals.keys()) {
+                console.log(key);
+            }
+
+            for(const value of romanNumberals.values()) {
+                console.log(value);
+            }
+
+            for(const [key, value] of romanNumberals.entries()) {
+                console.log(`${key} in Roman numberals is ${value}`);
+            }
 
 
         </script>
