@@ -62,7 +62,111 @@
 
             newHello('Universe');
 
-            //Now on PRIOR TO ES6
+            function discount(price, amount=10) {
+                return price*(100-amount)/100;
+            }
+            
+            const squareTwo = x => x*x;
+            const add = (x,y) => x + y;
+            const helloThree = () => alert('Hello World!');
+            const tax = (salary) => {
+                const taxable = salary - 8000;
+                const lowerRate = 0.25 * taxable;
+                taxable = taxable - 20000;
+                const higherRate = 0.4 * taxable;
+                return lowerRate + higherRate;
+            }
+
+            console.log(name);
+            var name = 'Alexa';
+            console.log(name);
+
+            //helloExpression(); throws an error
+            helloDeclaration();
+            var helloExpression = function() {
+                console.log('hello');
+            }
+
+            function helloDeclaration() {
+                console.log('hello');
+            }
+
+            helloExpression();
+            
+            if(typeof(callback) === 'function') {
+                callback();
+            }
+            
+            
+            sing('Let It Go');
+
+            function sing(song) {
+                console.log(`I'm singing along to ${song}`);
+            }
+
+            function numerically(a,b) {
+                return a-b;
+            }            
+
+            console.log([1,3,12,5,23,18,7].sort(numerically));
+
+            function numerically (a,b) {
+                if (a < b) {
+                    return -1;
+                } else if (a > b) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+
+            const colors = ['Red', 'Green', 'Blue']
+            for (let i=0, max=colors.length; i<max; i++) {
+                console.log(`Color at position ${i} is ${colors[i]}`);
+            }
+
+            colors.forEach( (color, index) =>
+            console.log(`Color at position ${index} is ${color}`));
+
+            //[1,2,3].map(square)
+            //[1,2,3].map(x => 2 * x);
+            ['red,', 'gree', 'blue',].map(color => `<p> ${color.toUpperCase()})</p>`);
+
+            ['red','green','blue'].map( (color, index, array) => `Element ${index} is ${color}. There are ${array.length} items in total.` );
+
+            //[1,2,3,4,5].reduce( (acc, val) => prev + val);
+
+            const sentence = 'The quick brown fox jumped over the lazy dog'
+            //const total = words.reduce( (acc,word) => acc + word.length,0 );
+            //const average = total/words.length;
+        
+            const numbers = [2, 7, 6, 5, 11, 23, 12]
+            console.log(numbers.filter(x => x%2 === 0));
+
+            const array = [0, 1, '0', false, true, 'hello'];
+            console.log(array.filter(Boolean));
+            console.log(array.filter(x => !x));
+
+            console.log([1,2,3].map( x => x*x ).reduce((acc, x) => acc + x));
+
+            const sales = [100, 230, 55];
+            console.log(totalAfterTaxSales = sales.map( (amount) => amount * 1.15).reduce( (acc, val) => acc + val));
+
+            function newMean(array) {
+                const total = array.reduce((a,b) => a + b);
+                return total/array.length;
+            }            
+
+            function newestMean(array, callback) {
+                if (callback) {
+                    array.map(callback);
+                }
+                const total = array.reduce((a,b) => a + b);
+                return total/array.length;
+            }
+
+            console.log(newestMean([2,5,7,11,4]));
+            //console.log(newestMean([2,5,7,11,4]),x => 2*x); can also write it this way
 
         </script>
 
