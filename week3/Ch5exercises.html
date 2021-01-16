@@ -189,9 +189,110 @@
             console.log(Math.trunc(4.9));
             console.log(Math.trunc(-4.2));
 
-            //next on POWERS and ROOTS
+            console.log(Math.exp(1));
+            console.log(Math.exp(0));
+            console.log(Math.exp(-3));
+            console.log(Math.pow(3,2));
+            console.log(Math.pow(4.5,0));
+            console.log(Math.pow(27,1/3));
 
+            console.log(Math.sqrt(121));
+            console.log(Math.sqrt(2));
+            console.log(Math.sqrt(-1));
+            console.log(Math.cbrt(8));
+            console.log(Math.cbrt(-1000));
+            console.log(Math.hypot(3,4));
+            console.log(Math.hypot(2,3,6));
 
+            console.log(Math.log(Math.E));
+            console.log(Math.log(1));
+            console.log(Math.log(0));
+            console.log(-2);
+
+            console.log(Math.log2(8));
+            console.log(Math.log10(1000000));
+
+            console.log(Math.max(1,2,3));
+            console.log(Math.max(Math.PI, Math.SQRT2, Math.E));
+
+            console.log(Math.min(1,2,3));
+            console.log(Math.min(Math.PI, Math.SQRT2,Math.E));
+
+            console.log(Math.sin(Math.PI/6));
+            console.log(Math.cos(Math.PI/6));
+            console.log(Math.tan(Math.PI/4));
+            console.log(Math.tan(Math.PI/2));
+            console.log(Math.asin(1));
+            console.log(Math.acos(.5));
+            console.log(Math.atan(Math.sqrt(3)));
+            console.log(Math.sinh(1));
+            console.log(Math.asinh(1.1752011936438014));
+            console.log(Math.cosh(0));
+            console.log(Math.acosh(1));
+            console.log(Math.tanh(10));
+            console.log(Math.atanh(0.9999999958776927));
+            
+            console.log(Math.random());
+            console.log(6*Math.random());
+            console.log(Math.floor(6*Math.random()));
+
+            const today = new Date();
+            console.log(today.toString());
+
+            const diwali = new Date(1508367600000);
+            console.log(diwali.toString());
+
+            console.log(diwali.getDay());
+            console.log(diwali.getMonth());
+            console.log(diwali.getFullYear());
+            console.log(diwali.getTime());
+            
+            console.log(diwali.setDate(7));
+            console.log(diwali.setMonth(10));
+            console.log(diwali.setFullYear(2018));
+
+            console.log(diwali.toString());
+
+            console.log(diwali.setTime(1447200000000));
+
+            const pattern = new RegExp('[a-zA-Z]+ing');
+            console.log(pattern.test('joke'));
+            console.log(pattern.test('joking'));
+            console.log(pattern.test('jokingly'));
+
+            console.log(pattern.exec('joke'));
+            console.log(pattern.exec('joking'));
+
+            newPattern = /java/i;
+            console.log(newPattern.test('JavaScript'));
+            console.log(newPattern.ignoreCase);
+
+            newestPattern = /^J[aeiou]+\w+ing$/
+            console.log(newestPattern.test('Joking'));
+            console.log(newestPattern.test('Jeering'));
+
+            const word = "abracadabra";
+            const greedyPattern = /a.+a/;
+            console.log(greedyPattern.exec(word));
+
+            const lazyPattern = /a.+?a/;
+            console.log(lazyPattern.exec(word));
+
+            const pdf = /.*\.pdf$/;
+            console.log(pdf.test('chapter5.pdf'));
+            console.log(pdf.test('report.doc'));
+
+            console.log('Hello World!'.split(/\s+/));
+
+            console.log('JavaScript'.match(/[aeiou]/));
+            console.log('JavaScript'.match(/[aeiou]/g));
+            console.log("I'm learning JavaScript".search(/java/i));
+            console.log("I'm learning JavaScript".search(/ruby/i));
+            console.log('JavaScript'.replace(/[aeiou]/ig,'*'));
+
+            const link = "<a href='https://www.sitepoint.com' title='Oh Yeah!'>Awesome Web Resources</a>"
+            const mdLink = link.replace(/<a href='(.*?)'.*?>(.*?)<\/a>/g, "[$2]($1)");
+            console.log(mdLink);
 
 
         </script>
