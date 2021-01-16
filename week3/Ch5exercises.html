@@ -3,177 +3,197 @@
     <meta charset="UTF-8"/>
     <title>Christine Noonan's WDD 330 Portfolio</title>
     <body>
-        <h3>Exercises & Notes for Chapter 2</h3>
+        <h3>Exercises & Notes for Chapter 5</h3>
         
         <p>Note: to see output, please open developer tools.</p>
 
         <script>
+            const superman = {
+                name: 'Superman',
+                realName: 'Clark Kent',
+                height: 75,
+                weight: 235,
+                hero: true,
+                villain: false,
+                allies: ['Batman', 'Supergirl', 'Superboy'],
+                fly() {
+                    return 'Up, up and away!';
+                }
+            };
+
+            const spiderman = {};
+
+            const name = 'Iron Man';
+            const realName = 'Tony Stark';
+
+            const ironMan = {name, realName};
             
+            console.log(superman.name);
+            console.log(superman['name']);
+
+            console.log(superman.realName);
+
+            console.log(superman.city);
+
+            const hulk = {name: 'Hulk', ['catch' + 'Phrase']: 'Hulk Smash!'};
+
+            const bewitched = true;
+            const captainBritain = {name: 'Captain Britain', hero: bewitched ? false : true};
+            console.log(captainBritain);
+
+            const nextName = Symbol('name');
+            const supergirl = {[nextName]: 'Supergirl'};
+            console.log(supergirl[nextName]);
+
+            const nextRealName = Symbol('real name');
+            console.log(supergirl[nextRealName] = 'Kara Danvers');
             
-            const message = "hello world!";
-            console.log(message);
+            const daredevil = {[name]: "Daredevil", [realName]: 'Matt Murdoch'};
 
-            const nametest = "Christine";
-            //nametest = "Marie"; will be an error
+            console.log(superman.fly());
+            console.log(superman['fly']());
 
-            const name = {value: "Christine"};
-            name.value = "Marie";
-            console.log(name); //name is now Marie
+            console.log('ciy' in superman);
 
-            const a = 1;
-            {const a = 3; a; 
-            console.log(a);} //value is 3
-            console.log(a); //value is 1. value was not overwritten
+            console.log(superman.hasOwnProperty('city'));
+            console.log(superman.hasOwnProperty('name'));
 
-            let b = 2;
-            { b = 4; b; }
-            console.log(b); //value is 4. value was overwritten
+            for(const key in superman) {
+                console.log(key + ": " + superman[key]);
+            }
 
-            { c = 5; c; }
-            console.log(c); //value is 5
+            for(const key of Object.keys(superman)) {
+                console.log(key);
+            }
 
-            {const d = 6; d; }
-            //console.log(d);// get an error because it's outside the block
+            for(const value of Object.values(superman)) {
+                console.log(value);
+            }
+
+            for(const [key,value] of Object.entries(superman)) {
+                console.log(`${key}: ${value}`);
+            }
+
+            superman.city = "Metropolis";
+
+            console.log(superman);
+
+            superman.realName = 'Kal-El';
+
+            console.log(superman);
             
-            const g = 1; 
-            let h = g; 
-            console.log(g); //value is 1
-            console.log(h); //value is 1
-            h = 2; 
-            console.log(h); //value is 2;
+            console.log(delete superman.fly);
 
-            const secondName = 'Alexa';
-            console.log(secondName.length); //value is 5; cannot change by reassigning value
-            console.log(secondName.toUpperCase()); //value is ALEXA
-            console.log(secondName.toLowerCase()); //value is alexa
-            console.log(secondName.charAt(1)); //value is letter l
-            console.log(secondName.indexOf('A')); //value is 0
-            console.log(secondName.indexOf('z')); //value is -1 because character does not appear
-            console.log(secondName.includes('a')); //true
-            console.log(secondName.includes('z')); //false
-            console.log(secondName.startsWith('A')); //true
-            console.log(secondName.startsWith('a')); //false
-            console.log('JavaScript'.concat('Ninja')); //JavaScriptNinja
-            console.log('Java' + 'Script' + ' ' + 'Ninja'); //JavaScript Ninja
-            console.log('    Hello World   '.trim()); //gets rid of extra white spaces
-            console.log('   \t\t JavaScript Ninja! \r'.trim()); //gets rid of escaped tabs and carriage returns
-            console.log('Hello'.repeat(2)); // HelloHello
+            console.log(superman);
 
-            const nameThree = `Robert`;
-            console.log(`Hello ${nameThree}!`); //Hello Robert!
+            const jla = {
+                superman: { realName: 'Clark Kent'},
+                batman: {realName: 'Bruce Wayne'},
+                wonderWoman: {realName: "Diana Prince"},
+                flash: {realName: "BarryAllen"},
+                aquaman: {realName: "Arthur Curry"},
+            }
             
-            const age = 39;
-            console.log(`I will be ${age + 1} next year`); //I will be 40 next year
+            console.log(jla.wonderWoman.realName);
+            console.log(jla['flash']['realName']);
+            console.log(jla.aquaman['realName']);
 
-            const uniqueID = Symbol('this is a unique ID');
-            console.log(typeof uniqueID); //symbol
+            const thor = {name: 'Thor'};
+            const cloneThor = thor;
+            cloneThor.name = 'Clor';
+            console.log(thor.name);
 
-            const A = Symbol.for('shared symbol'); //points to the same symbol in memory
-            const B = Symbol.for('shared symbol'); //points to the same symbol in memory
+            function greet({greeting,name,age}) {
+                return `${greeting}! My name is ${name} and I am ${age} years old.`;
+            }
 
-            console.log(Number.isInteger(42)); //true
-            console.log(Number.isInteger(3.142)); //false
+            console.log(greet({greeting: `What's up dude`, age: 10, name: `Bart`}));
 
-            console.log(1e6); //1,000,000
-            console.log(2.5e-3); //.0025
+            function greet({greeting="Hello",name,age=18}) {
+                return `${greeting}! My name is ${name} and I am ${age} years old.`;
+            }
 
-            console.log(5..toExponential()); //5e+0
-            console.log(5.0.toExponential()); //5e+0
+            console.log(greet({ name: 'Lisa', age: 8 }));
 
-            const number = 5;
-            console.log(number.toExponential()); //5e+0
+            const dice = {
+                sides: 6,
+                roll() {
+                    return Math.floor(this.sides * Math.random()) + 1;
+                }
+            }
 
-            const PI = 3.1415926;
-            console.log(PI.toFixed(3)); //3.142
+            console.log(dice.roll());
+            console.log(dice.roll());
 
-            console.log(2.459.toPrecision(2)); //2.5
+            const myMaths = {
+                square(x) {
+                    return x * x;
+                },
+                mean(array, callback) {
+                    if (callback) {
+                        array.map(callback);
+                    }
+                    const total = array.reduce((a,b) => a + b);
+                    return total/array.length;
+                }
+            };
 
-            console.log(5 + 4.3); //9.3
-            console.log(6 - 11); //-5
-            console.log(3 / 7);  //.42857142857142855
-            console.log(23 % 6); //remainder 5
+            console.log(myMaths.square(3));
+            console.log(myMaths.mean([1,2,3]));
 
-            let points = 0;
-            points = points + 10;
-            console.log(points); //10
-            //or points += 10;
+            const batman = '{"name": "Batman","real name": "Bruce Wayne","height": 74, "weight": 210, "hero": true, "villain": false, "allies": ["Robin","Batgirl","Superman"]}'
 
-            console.log(++points); //11
+            console.log(JSON.parse(batman));
 
-            console.log(points--); //returns 11 but has decreased to 10
+            const wonderWoman = {
+                name: 'Wonder Woman',
+                'real name': 'Diana Prince',
+                height: 72,
+                weight: 165,
+                hero: true,
+                villain: false,
+                allies: ['Wonder Girl','Donna Troy','Superman'],
+                lasso: function(){
+                    console.log('You will tell the truth!');
+                }
+            }
+
+            console.log(JSON.stringify(wonderWoman));
+
+            console.log(JSON.stringify(wonderWoman,null," "));
+
+            console.log(Math.PI);
+            console.log(Math.SQRT2);
+            console.log(Math.SQRT1_2);
+            console.log(Math.E);
+            console.log(Math.LN2);
+            console.log(Math.LN10);
+            console.log(Math.LOG2E);
+            console.log(Math.LOG10E);
+
+            console.log(Math.abs(3));
+            console.log(Math.abs(-4.6));
+
+            console.log(Math.ceil(4.2));
+            console.log(Math.ceil(8));
+            console.log(Math.ceil(-4.2));
             
-            console.log(1e308); //infinity
-            //or by 1/0
+            console.log(Math.floor(4.2));
+            console.log(Math.floor(8));
+            console.log(Math.floor(-4.2));
 
-            console.log(5e-324); //smallest number that can be logged
+            console.log(Math.round(4.5));
+            console.log(Math.round(4.499));
+            console.log(Math.round(-4.2));
 
-            console.log('hello' * 5); //returns Not a Number
+            console.log(Math.trunc(4.9));
+            console.log(Math.trunc(-4.2));
 
-            console.log(Number.isFinite(1/0)); //false
-            console.log(Number.isFinite(-Infinity)); //false
-            console.log(Number.isFinite(NaN)); //false
-            console.log(Number.isFinite(42)); //true
+            //next on POWERS and ROOTS
 
-            console.log(Number('23')); //23
-            console.log(Number('hello')); //NaN
 
-            const answer = '5' * 1;
-            console.log(answer); //5
-            console.log(typeof answer); //number
 
-            console.log(String(3)); //3
-            console.log(10..toString(2)); //1010
 
-            console.log(parseInt('1010', 2)); //10
-            console.log(parseInt('omg', 36)); //31912
-            console.log(parseInt('23', 10)); //23
-
-            const address = '221B Baker Street';
-            console.log(parseInt(address, 10)); //221
-
-            console.log(parseInt('2.4', 10)); //2  just removes part after decimal
-
-            console.log(parseFloat('2.9', 10)); //2.9
-
-            console.log(10 + null); //10
-            console.log(10 + undefined); //NaN
-
-            console.log(Boolean('hello')); //true
-            console.log(Boolean(42)); //true
-            console.log(Boolean(0)); //false. only 9 values are always false
-
-            console.log(!true); //false
-            console.log(!0); //true
-
-            console.log(!!3); //true
-
-            console.log('shoes' && 18); //18
-            console.log('shoes' && 0); //0
-
-            console.log('shoes' || 0); //shoes
-            console.log(NaN || undefined); //undefined
-
-            let k = 0;
-            console.log(k);
-            console.log(false && (k = 1)); //false
-            console.log(k); //still 0
-            console.log(false || (k = 1)); //evaluates so value is 1
-
-            console.log(3 << 1); // 3 * 2 = 6
-
-            console.log(16 != '16'); //false
-            console.log(16 !== '16'); //true
-
-            console.log( 8 > 4); //true
-            console.log(8 < 4); //false
-            console.log(8 >= 4); //true
-            console.log(8 >=8); //true
-
-            console.log(8 > 8 || 8 === 8); //true
-            console.log(8 > '8' || 8 === '8'); //false
-
-            console.log('apples' < 'bananas'); //true. is alphabetical
-            
         </script>
 
     </body>
