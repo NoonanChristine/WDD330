@@ -14,7 +14,9 @@
         <li class='hero'>Wonder Woman</li>
     </ul>
 
-    <p>Note: Please open developer tools. Used console.log instead of Console</p>
+    <p>Note: Please open developer tools. Used console.log instead of typing into the Console for most exercises</p>
+
+    <p>Question: how do you reset the DOM, please? I closed the page, opened it again in the browser, tried googling the answer, but could only find how to reset a form.</p>
     <script>
         const body = document.body;
         console.log(typeof body);
@@ -39,6 +41,94 @@
         const wonderWoman = document.querySelector('li:last-child');
         const ul = document.querySelector('ul#roster');
         const batman = ul.querySelector('li#bats');
+
+        const newHeroes = document.getElementById('roster');
+        console.log(newHeroes.childNodes);
+        console.log(newHeroes.children);
+        console.log(newHeroes.children.length);
+        console.log(newHeroes.firstChild);
+        console.log(newHeroes.lastChild);
+
+        const newWonderWoman = document.querySelector('ul#roster li:last-child');
+        console.log(newWonderWoman.parentNode);
+        console.log(newWonderWoman.nextSibling);
+        console.log(newWonderWoman.previousSibling);
+
+        const textNode = wonderWoman.firstChild;
+        console.log(textNode.nodeValue);
+        console.log(wonderWoman.textContent);
+
+        console.log(wonderWoman.getAttribute('class'));
+        console.log(wonderWoman.getAttribute('src'));
+        console.log(wonderWoman.setAttribute('class', 'villain'));
+        console.log(wonderWoman.getAttribute('class'));
+        console.log(wonderWoman.setAttribute('id', 'amazon'));
+        console.log(wonderWoman.getAttribute('id'));
+
+        console.log(wonderWoman.id);
+        console.log(wonderWoman);
+
+        console.log(wonderWoman.className);
+        console.log(wonderWoman.className = 'hero');
+        console.log(wonderWoman.classList.add('warrior'));
+        console.log(wonderWoman.className);
+        console.log(wonderWoman.classList.remove('warrior'));
+        console.log(wonderWoman.classList.toggle('hero'));
+        console.log(wonderWoman.classList.toggle('sport'));
+        console.log(wonderWoman.classList.contains('hero'));
+        console.log(wonderWoman.classList.contains('villain'));
+
+        function addClass(element, newClass) {
+            if (element.className) {
+                element.className = element.className + ' ' + newClass;
+            } else {
+                element.className = newClass;
+            }
+            return element.className;
+        }
+
+        console.log(addClass(wonderWoman, 'warrior'));
+
+        const flash = document.createElement('li');
+        const flashText = document.createTextNode('Flash');
+        flash.appendChild(flashText);
+
+        flash.textContent = 'Flash';
+
+        function createElement (tag, text) {
+            const el = document.createElement(tag);
+            el.textContent = text;
+            return el;
+        }
+
+        const aquaman = createElement('li', 'Aquaman');
+
+        newHeroes.appendChild(flash);  
+        newHeroes.insertBefore(aquaman,wonderWoman);
+        newHeroes.appendChild(wonderWoman);
+        newHeroes.removeChild(aquaman);
+        newHeroes.appendChild(aquaman);
+
+        const oldText = h1.firstChild;
+        const newText = document.createTextNode('Justice League of America');
+        h1.replaceChild(newText,oldText);
+
+        //newHeroes.innerHTML = '<li>Harley Quinn</li><li>Deadshot</li><li>Killer Croc</li><li>Enchantress</li><li>Captain Boomerang</li><li>Katana</li><li>Slipknot</li>';
+
+        const list = newHeroes.children;
+        console.log(list.length);
+        newHeroes.removeChild(batman);
+        console.log(list.length);
+        console.log(newHeroes.children[2]);
+
+        const superman = newHeroes.children[0];
+        superman.style.border = "red 2px solid";
+        superman.style.backgroundColor = 'blue';
+        superman.style.display = 'none';
+        superman.style.display - 'block';
+        console.log(getComputedStyle(superman));
+        //console.log(getComputedStyle(superman).getPropertyCSSValue('color').cssText); //as noted, my browser throws an error for this one   
+
 
     </script>
 
