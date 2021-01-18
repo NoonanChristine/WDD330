@@ -1,180 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-    <meta charset="UTF-8"/>
-    <title>Christine Noonan's WDD 330 Portfolio</title>
+<!doctype html>
+<html lang='en'>
+    <head>
+        <meta charset='utf-8'>
+        <title>Events Examples</title>
+        <style>
+            p {
+                width: 200px;
+                height: 200px;
+                margin: 10px;
+                background-color: #ccc;
+                float: left;
+            }
+            .highlight {
+                background-color: red;
+            }
+        </style>
+    </head>
     <body>
-        <h3>Exercises & Notes for Chapter 2</h3>
+        <p id='click'>Click On Me</p>
+        <p id='dblclick'>Double Click On Me</p>
+        <p id='mouse'>Hover On Me</p>
+
+        <p id='once'>A One Time Thing...</p>
         
-        <p>Note: to see output, please open developer tools.</p>
+        <p>
+            <a id='broken' href='https://sitepoint.com'>Broken Link</a>
+        </p>
 
-        <script>
-            
-            
-            const message = "hello world!";
-            console.log(message);
+        <ul id='list'>
+            <li>one</li>
+            <li>two</li>
+            <li>three</li>
+        </ul>
 
-            const nametest = "Christine";
-            //nametest = "Marie"; will be an error
-
-            const name = {value: "Christine"};
-            name.value = "Marie";
-            console.log(name); //name is now Marie
-
-            const a = 1;
-            {const a = 3; a; 
-            console.log(a);} //value is 3
-            console.log(a); //value is 1. value was not overwritten
-
-            let b = 2;
-            { b = 4; b; }
-            console.log(b); //value is 4. value was overwritten
-
-            { c = 5; c; }
-            console.log(c); //value is 5
-
-            {const d = 6; d; }
-            //console.log(d);// get an error because it's outside the block
-            
-            const g = 1; 
-            let h = g; 
-            console.log(g); //value is 1
-            console.log(h); //value is 1
-            h = 2; 
-            console.log(h); //value is 2;
-
-            const secondName = 'Alexa';
-            console.log(secondName.length); //value is 5; cannot change by reassigning value
-            console.log(secondName.toUpperCase()); //value is ALEXA
-            console.log(secondName.toLowerCase()); //value is alexa
-            console.log(secondName.charAt(1)); //value is letter l
-            console.log(secondName.indexOf('A')); //value is 0
-            console.log(secondName.indexOf('z')); //value is -1 because character does not appear
-            console.log(secondName.includes('a')); //true
-            console.log(secondName.includes('z')); //false
-            console.log(secondName.startsWith('A')); //true
-            console.log(secondName.startsWith('a')); //false
-            console.log('JavaScript'.concat('Ninja')); //JavaScriptNinja
-            console.log('Java' + 'Script' + ' ' + 'Ninja'); //JavaScript Ninja
-            console.log('    Hello World   '.trim()); //gets rid of extra white spaces
-            console.log('   \t\t JavaScript Ninja! \r'.trim()); //gets rid of escaped tabs and carriage returns
-            console.log('Hello'.repeat(2)); // HelloHello
-
-            const nameThree = `Robert`;
-            console.log(`Hello ${nameThree}!`); //Hello Robert!
-            
-            const age = 39;
-            console.log(`I will be ${age + 1} next year`); //I will be 40 next year
-
-            const uniqueID = Symbol('this is a unique ID');
-            console.log(typeof uniqueID); //symbol
-
-            const A = Symbol.for('shared symbol'); //points to the same symbol in memory
-            const B = Symbol.for('shared symbol'); //points to the same symbol in memory
-
-            console.log(Number.isInteger(42)); //true
-            console.log(Number.isInteger(3.142)); //false
-
-            console.log(1e6); //1,000,000
-            console.log(2.5e-3); //.0025
-
-            console.log(5..toExponential()); //5e+0
-            console.log(5.0.toExponential()); //5e+0
-
-            const number = 5;
-            console.log(number.toExponential()); //5e+0
-
-            const PI = 3.1415926;
-            console.log(PI.toFixed(3)); //3.142
-
-            console.log(2.459.toPrecision(2)); //2.5
-
-            console.log(5 + 4.3); //9.3
-            console.log(6 - 11); //-5
-            console.log(3 / 7);  //.42857142857142855
-            console.log(23 % 6); //remainder 5
-
-            let points = 0;
-            points = points + 10;
-            console.log(points); //10
-            //or points += 10;
-
-            console.log(++points); //11
-
-            console.log(points--); //returns 11 but has decreased to 10
-            
-            console.log(1e308); //infinity
-            //or by 1/0
-
-            console.log(5e-324); //smallest number that can be logged
-
-            console.log('hello' * 5); //returns Not a Number
-
-            console.log(Number.isFinite(1/0)); //false
-            console.log(Number.isFinite(-Infinity)); //false
-            console.log(Number.isFinite(NaN)); //false
-            console.log(Number.isFinite(42)); //true
-
-            console.log(Number('23')); //23
-            console.log(Number('hello')); //NaN
-
-            const answer = '5' * 1;
-            console.log(answer); //5
-            console.log(typeof answer); //number
-
-            console.log(String(3)); //3
-            console.log(10..toString(2)); //1010
-
-            console.log(parseInt('1010', 2)); //10
-            console.log(parseInt('omg', 36)); //31912
-            console.log(parseInt('23', 10)); //23
-
-            const address = '221B Baker Street';
-            console.log(parseInt(address, 10)); //221
-
-            console.log(parseInt('2.4', 10)); //2  just removes part after decimal
-
-            console.log(parseFloat('2.9', 10)); //2.9
-
-            console.log(10 + null); //10
-            console.log(10 + undefined); //NaN
-
-            console.log(Boolean('hello')); //true
-            console.log(Boolean(42)); //true
-            console.log(Boolean(0)); //false. only 9 values are always false
-
-            console.log(!true); //false
-            console.log(!0); //true
-
-            console.log(!!3); //true
-
-            console.log('shoes' && 18); //18
-            console.log('shoes' && 0); //0
-
-            console.log('shoes' || 0); //shoes
-            console.log(NaN || undefined); //undefined
-
-            let k = 0;
-            console.log(k);
-            console.log(false && (k = 1)); //false
-            console.log(k); //still 0
-            console.log(false || (k = 1)); //evaluates so value is 1
-
-            console.log(3 << 1); // 3 * 2 = 6
-
-            console.log(16 != '16'); //false
-            console.log(16 !== '16'); //true
-
-            console.log( 8 > 4); //true
-            console.log(8 < 4); //false
-            console.log(8 >= 4); //true
-            console.log(8 >=8); //true
-
-            console.log(8 > 8 || 8 === 8); //true
-            console.log(8 > '8' || 8 === '8'); //false
-
-            console.log('apples' < 'bananas'); //true. is alphabetical
-            
-        </script>
-
+        <script src='main.js'></script>
     </body>
 </html>
