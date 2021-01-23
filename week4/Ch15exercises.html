@@ -3,297 +3,41 @@
     <meta charset="UTF-8"/>
     <title>Christine Noonan's WDD 330 Portfolio</title>
     <body>
-        <h3>Exercises & Notes for Chapter 5</h3>
-        
-        <p>Note: to see output, please open developer tools.</p>
+        <h3>Notes for Chapter 15 (Modular JavaScript)</h3>
+        <p>Modular JavaScript</p>
+        <ul>
+            <li>self-contained code</li>
+            <li>code should have a single purpose</li>
+            <li>group functions with distinct functionality</li>
+            <li>makes it easy to swap out modules</li>
+            <li>can have a public API and keep other implmentation code hidden</li>
+        </ul>
+        <p>Modules</p>
+        <ul>
+            <li>all code is always in strict mode</li>
+            <li>has it's own global scope</li>
+            <li>'this' in the top leve is 'undefined'</li>
+            <li>can't use HTML-style comments</li>
+        </ul>
+        <p>Functions</p>
+        <ul>
+            <li>functions can be exported from a module</li>
+            <li>when importing a lot of functions and values can use the wildcard symbol *</li>
+            <li>can be selective about which values or functions are imported</li>
+        </ul>
+        <p>Default Exports</p>
+        <ul>
+            <li>refers to a single variable, function, or class in a module</li>
+            <li>can not use more than one default export</li>
+        </ul>
+        <p>Node.js Modules</p>
+        <ul>
+            <li>uses a different notation</li>
+            <li>Common JS module pattern</li>
+        </ul>
 
         <script>
-            const superman = {
-                name: 'Superman',
-                realName: 'Clark Kent',
-                height: 75,
-                weight: 235,
-                hero: true,
-                villain: false,
-                allies: ['Batman', 'Supergirl', 'Superboy'],
-                fly() {
-                    return 'Up, up and away!';
-                }
-            };
-
-            const spiderman = {};
-
-            const name = 'Iron Man';
-            const realName = 'Tony Stark';
-
-            const ironMan = {name, realName};
             
-            console.log(superman.name);
-            console.log(superman['name']);
-
-            console.log(superman.realName);
-
-            console.log(superman.city);
-
-            const hulk = {name: 'Hulk', ['catch' + 'Phrase']: 'Hulk Smash!'};
-
-            const bewitched = true;
-            const captainBritain = {name: 'Captain Britain', hero: bewitched ? false : true};
-            console.log(captainBritain);
-
-            const nextName = Symbol('name');
-            const supergirl = {[nextName]: 'Supergirl'};
-            console.log(supergirl[nextName]);
-
-            const nextRealName = Symbol('real name');
-            console.log(supergirl[nextRealName] = 'Kara Danvers');
-            
-            const daredevil = {[name]: "Daredevil", [realName]: 'Matt Murdoch'};
-
-            console.log(superman.fly());
-            console.log(superman['fly']());
-
-            console.log('ciy' in superman);
-
-            console.log(superman.hasOwnProperty('city'));
-            console.log(superman.hasOwnProperty('name'));
-
-            for(const key in superman) {
-                console.log(key + ": " + superman[key]);
-            }
-
-            for(const key of Object.keys(superman)) {
-                console.log(key);
-            }
-
-            for(const value of Object.values(superman)) {
-                console.log(value);
-            }
-
-            for(const [key,value] of Object.entries(superman)) {
-                console.log(`${key}: ${value}`);
-            }
-
-            superman.city = "Metropolis";
-
-            console.log(superman);
-
-            superman.realName = 'Kal-El';
-
-            console.log(superman);
-            
-            console.log(delete superman.fly);
-
-            console.log(superman);
-
-            const jla = {
-                superman: { realName: 'Clark Kent'},
-                batman: {realName: 'Bruce Wayne'},
-                wonderWoman: {realName: "Diana Prince"},
-                flash: {realName: "BarryAllen"},
-                aquaman: {realName: "Arthur Curry"},
-            }
-            
-            console.log(jla.wonderWoman.realName);
-            console.log(jla['flash']['realName']);
-            console.log(jla.aquaman['realName']);
-
-            const thor = {name: 'Thor'};
-            const cloneThor = thor;
-            cloneThor.name = 'Clor';
-            console.log(thor.name);
-
-            function greet({greeting,name,age}) {
-                return `${greeting}! My name is ${name} and I am ${age} years old.`;
-            }
-
-            console.log(greet({greeting: `What's up dude`, age: 10, name: `Bart`}));
-
-            function greet({greeting="Hello",name,age=18}) {
-                return `${greeting}! My name is ${name} and I am ${age} years old.`;
-            }
-
-            console.log(greet({ name: 'Lisa', age: 8 }));
-
-            const dice = {
-                sides: 6,
-                roll() {
-                    return Math.floor(this.sides * Math.random()) + 1;
-                }
-            }
-
-            console.log(dice.roll());
-            console.log(dice.roll());
-
-            const myMaths = {
-                square(x) {
-                    return x * x;
-                },
-                mean(array, callback) {
-                    if (callback) {
-                        array.map(callback);
-                    }
-                    const total = array.reduce((a,b) => a + b);
-                    return total/array.length;
-                }
-            };
-
-            console.log(myMaths.square(3));
-            console.log(myMaths.mean([1,2,3]));
-
-            const batman = '{"name": "Batman","real name": "Bruce Wayne","height": 74, "weight": 210, "hero": true, "villain": false, "allies": ["Robin","Batgirl","Superman"]}'
-
-            console.log(JSON.parse(batman));
-
-            const wonderWoman = {
-                name: 'Wonder Woman',
-                'real name': 'Diana Prince',
-                height: 72,
-                weight: 165,
-                hero: true,
-                villain: false,
-                allies: ['Wonder Girl','Donna Troy','Superman'],
-                lasso: function(){
-                    console.log('You will tell the truth!');
-                }
-            }
-
-            console.log(JSON.stringify(wonderWoman));
-
-            console.log(JSON.stringify(wonderWoman,null," "));
-
-            console.log(Math.PI);
-            console.log(Math.SQRT2);
-            console.log(Math.SQRT1_2);
-            console.log(Math.E);
-            console.log(Math.LN2);
-            console.log(Math.LN10);
-            console.log(Math.LOG2E);
-            console.log(Math.LOG10E);
-
-            console.log(Math.abs(3));
-            console.log(Math.abs(-4.6));
-
-            console.log(Math.ceil(4.2));
-            console.log(Math.ceil(8));
-            console.log(Math.ceil(-4.2));
-            
-            console.log(Math.floor(4.2));
-            console.log(Math.floor(8));
-            console.log(Math.floor(-4.2));
-
-            console.log(Math.round(4.5));
-            console.log(Math.round(4.499));
-            console.log(Math.round(-4.2));
-
-            console.log(Math.trunc(4.9));
-            console.log(Math.trunc(-4.2));
-
-            console.log(Math.exp(1));
-            console.log(Math.exp(0));
-            console.log(Math.exp(-3));
-            console.log(Math.pow(3,2));
-            console.log(Math.pow(4.5,0));
-            console.log(Math.pow(27,1/3));
-
-            console.log(Math.sqrt(121));
-            console.log(Math.sqrt(2));
-            console.log(Math.sqrt(-1));
-            console.log(Math.cbrt(8));
-            console.log(Math.cbrt(-1000));
-            console.log(Math.hypot(3,4));
-            console.log(Math.hypot(2,3,6));
-
-            console.log(Math.log(Math.E));
-            console.log(Math.log(1));
-            console.log(Math.log(0));
-            console.log(-2);
-
-            console.log(Math.log2(8));
-            console.log(Math.log10(1000000));
-
-            console.log(Math.max(1,2,3));
-            console.log(Math.max(Math.PI, Math.SQRT2, Math.E));
-
-            console.log(Math.min(1,2,3));
-            console.log(Math.min(Math.PI, Math.SQRT2,Math.E));
-
-            console.log(Math.sin(Math.PI/6));
-            console.log(Math.cos(Math.PI/6));
-            console.log(Math.tan(Math.PI/4));
-            console.log(Math.tan(Math.PI/2));
-            console.log(Math.asin(1));
-            console.log(Math.acos(.5));
-            console.log(Math.atan(Math.sqrt(3)));
-            console.log(Math.sinh(1));
-            console.log(Math.asinh(1.1752011936438014));
-            console.log(Math.cosh(0));
-            console.log(Math.acosh(1));
-            console.log(Math.tanh(10));
-            console.log(Math.atanh(0.9999999958776927));
-            
-            console.log(Math.random());
-            console.log(6*Math.random());
-            console.log(Math.floor(6*Math.random()));
-
-            const today = new Date();
-            console.log(today.toString());
-
-            const diwali = new Date(1508367600000);
-            console.log(diwali.toString());
-
-            console.log(diwali.getDay());
-            console.log(diwali.getMonth());
-            console.log(diwali.getFullYear());
-            console.log(diwali.getTime());
-            
-            console.log(diwali.setDate(7));
-            console.log(diwali.setMonth(10));
-            console.log(diwali.setFullYear(2018));
-
-            console.log(diwali.toString());
-
-            console.log(diwali.setTime(1447200000000));
-
-            const pattern = new RegExp('[a-zA-Z]+ing');
-            console.log(pattern.test('joke'));
-            console.log(pattern.test('joking'));
-            console.log(pattern.test('jokingly'));
-
-            console.log(pattern.exec('joke'));
-            console.log(pattern.exec('joking'));
-
-            newPattern = /java/i;
-            console.log(newPattern.test('JavaScript'));
-            console.log(newPattern.ignoreCase);
-
-            newestPattern = /^J[aeiou]+\w+ing$/
-            console.log(newestPattern.test('Joking'));
-            console.log(newestPattern.test('Jeering'));
-
-            const word = "abracadabra";
-            const greedyPattern = /a.+a/;
-            console.log(greedyPattern.exec(word));
-
-            const lazyPattern = /a.+?a/;
-            console.log(lazyPattern.exec(word));
-
-            const pdf = /.*\.pdf$/;
-            console.log(pdf.test('chapter5.pdf'));
-            console.log(pdf.test('report.doc'));
-
-            console.log('Hello World!'.split(/\s+/));
-
-            console.log('JavaScript'.match(/[aeiou]/));
-            console.log('JavaScript'.match(/[aeiou]/g));
-            console.log("I'm learning JavaScript".search(/java/i));
-            console.log("I'm learning JavaScript".search(/ruby/i));
-            console.log('JavaScript'.replace(/[aeiou]/ig,'*'));
-
-            const link = "<a href='https://www.sitepoint.com' title='Oh Yeah!'>Awesome Web Resources</a>"
-            const mdLink = link.replace(/<a href='(.*?)'.*?>(.*?)<\/a>/g, "[$2]($1)");
-            console.log(mdLink);
-
 
         </script>
 
