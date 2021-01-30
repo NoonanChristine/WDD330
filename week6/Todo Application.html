@@ -6,23 +6,23 @@
     <title>To Do Application</title>
 </head>
 <body>
-    <h1>Todos</h1>
+    <header>Todos</header>
+
     <form action="">
         <label for"task">Task</label><br>
+        <ul id="taskList">
+            <li></li>
+        </ul>
     </form>
 
     
 
     <footer>
-        <ul>
-            <li>To do 1</li>
-            <li>To do 2</li>
-            <li>To do 3</li>
-    
-        </ul>
+        <input type="text" id="insertTask">
+        <span onclick="addTodos()" class="addButton">+</span>
     </footer>
 
-    //https://www.w3schools.com/howto/howto_js_todolist.asp
+    <!-- https://www.w3schools.com/howto/howto_js_todolist.asp -->
     
 </body>
 </html>
