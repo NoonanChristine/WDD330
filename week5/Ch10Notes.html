@@ -21,31 +21,140 @@
         <li>Return value can be used to deal with the error</li>
     </ul>
     <h2>Stack Traces</h2>
-
-
-
+    <ul>
+        <li>Prduced by an exception</li>
+        <li>Sequence of functions or method calls</li>
+        <li>Works backwards to identify original function or method that started the sequence</li>
+    </ul>
+    <h2>Warnings</h2>
+    <ul>
+        <li>Error but doesn't cause program to crash</li>
+        <li>Program will continue to run</li>
+        <li>Program may run incorrectly</li>
+        <li>Not all browsers display warnings</li>
+    </ul>
     <h1>The Importance of Testing and Debugging</h1>
-
-
+    <ul>
+        <li>Sometimes JavaScript fails silently in the background</li>
+        <li>Need to find errors and identify</li>
+        <li>Catch exceptions and deal with them</li>
+    </ul>
     <h1>Strict Mode</h1>
-    
-    
+    <ul>
+        <li>ECMAScript 5 increased the chance of errors</li>
+        <li>Better to catch errors and deal with early on</li>
+        <li>Improves coding clarity and speed</li>
+        <li>Add 'use strict'; to first line of JavaScript file</li>
+        <li>Can also implement inside a function</li>
+    </ul>
+    <h2>Linting Tools</h2>
+    <ul>
+        <li>Test the quality of JavaScript code</li>
+        <li>Enforce a programming style guide</li>
+        <li>Useful when working with a team</li>
+        <li>Not a guarantee that code is correct</li>
+    </ul>
+    <h2>Feature Detection</h2>
+    <ul>
+        <li>To determine broswer support</li>
+        <li>Uses an if statement to check whether object or method exists before calling method</li>
+        <li>Method is only called if it actually exists</li>
+        <li>Fails gracefully with exceptions if method does not exist</li>
+    </ul>
     <h1>Debugging in the Browser</h1>
-    
-    
+    <ul>
+        <li>Finding bugs in code and dealing with them</li>
+        <li>Useful to create breakpoints</li>
+    </ul>
+    <h2>The Trusty Alert</h2>
+    <ul>
+        <li>Mot basic form of debugging is to use the alert() method</li>
+        <li>Stops program until OK is clicked</li>
+        <li>Discouraged for debugging today</li>
+    </ul>
+    <h2>Using the Console</h2>
+    <ul>
+        <li>Not officially part of the ECMAScript</li>
+        <li>Log variables at different stages of the program</li>
+        <li>Does not stop the execution of the program</li>
+    </ul>
+    <h2>Debugging Tools</h2>
+    <ul>
+        <li>Breakpoints pause code at certain points</li>
+        <li>Debugger keyword creates breakpoints</li>
+        <li>Hover over variables to see what value they hold at that point</li>
+        <li>Must remove when shipping code otherwise program will appear to freeze when used</li>
+    </ul>
     <h1>Error Objects</h1>
-    
-    
+    <ul>
+        <li>Can be created by the host environment when exception occurs</li>
+        <li>Can be created in the code using a constructor function</li>
+        <li>Errors:</li>
+        <ul>
+            <li>Error: "takes a parameter that’s used as the error message"</li>
+            <li>EvalError: Not used in the current ECMAScript. Only retained for backwards compatibility. </li>
+            <li>RangeError: "is thrown when a number is outside an allowable range of values."</li>
+            <li>ReferenceError: "is thrown when a reference is made to an item that doesn’t exist"</li>
+            <li>SyntaxError: "is thrown when there’s an error in the code’s syntax."</li>
+            <li>TypeError: "is thrown when there’s an error in the type of value used"</li>
+            <li>URIError: "is thrown when there’s a problem encoding or decoding the URI"</li>
+            <li>InternalError: "a non-standard error that is thrown when an error occurs in the JavaScript engine. A common cause of this too much recursion."</li>
+        </ul>
+        <li>Safe properties:</li>
+        <ul>
+            <li>Name property. Returns name of error constructor function used as a string</li>
+            <li>Message property. Returns description of the error</li>
+            <li>Stack property. Returns a stack trace for that error</li>
+        </ul>
+    </ul>
     <h1>Throwing Exceptions</h1>
-    
-    
+    <ul>
+        <li>Can throw own excpetions using the throw statement</li>
+        <li>Can be applied to any JavaScript expression</li>
+        <li>Causes program to stop</li>
+        <li>Best practice to throw an error object</li>
+    </ul>
     <h1>Exception Handling</h1>
-    
-    
+    <ul>
+        <li>Exception causes program to terminate with an error message</li>
+        <li>Allows for identifying and fixing errors</li>
+        <li>Can handle exceptions by catching and dealing with them</li>
+    </ul>
+    <h2>Try, Catch, and Finally</h2>
+    <ul>
+        <li>Wrap code in a try block if we think we might run into an exception</li>
+        <li>If exception occurs, will pass error object onto a catch block</li>
+        <li>Finally block executed after try or catch block if exception or no exception</li>
+        <li>Finally used if you want code to run in both cases</li>
+    </ul>
+    <h2>Tests</h2>
+    <ul>
+        <li>Test functions and code as it is written</li>
+    </ul>
+    <h2>Test-Drive Development</h2>
+    <ul>
+        <li>"Process of writing tests before any actual code"</li>
+        <li>Code is continually tested at each stage</li>
+        <li>Workflow:</li>
+        <ul>
+            <li>Write tests (will initially fail)</li>
+            <li>Write code to pass the tests</li>
+            <li>Refactor the code</li>
+            <li>Test refactored code</li>
+            <li>Write more tests for new features</li>
+        </ul>
+        <li>Considered best-practice</li>
+    </ul>
     <h1>Testing Frameworks</h1>
-    
-
-
-
+    <ul>
+        <li>Can write own tests</li>
+        <li>Frameworks are available for testing</li>
+    </ul>
+    <h2>Jest</h2>
+    <ul>
+        <li>Test-driven development framework</li>
+        <li>Created by Facebook</li>
+        <li>Provides helper methods for common test assertions</li>
+    </ul>
 </body>
 </html>
