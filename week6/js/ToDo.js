@@ -1,7 +1,7 @@
-import utils from '.utilities.js';
+//import utils from './utilities.js';
 import ls from './ls.js';
 
-document.querySelector('addBtn').onclick = newTodo;
+document.querySelector('#addBtn').onclick = newTodo;
 
 function loadTodos() {
     const todoList = ls.getTodoList();
@@ -13,6 +13,7 @@ function loadTodos() {
 }
 
 function newTodo() {
+    //console.log("we got here");  This works
     const todo = createTodo();
     const todoDiv = createTodoElement(todo);
     addToList(todoDiv);
@@ -21,19 +22,21 @@ function newTodo() {
 
 function createTodo() {
     const input = document.querySelector('#todoInput');
-    const newTodo = {id: Date.now(), content: input.nodeValue, complete: false}
+    const newTodo = {id: Date.now(), content: input.value, complete: false} //will just change complete to true when click complete button. think about styling
     input.value = '';
     return newTodo;
 }
 
 function createTodoElement(todo) {
     //todo div
+    console.log(todo);
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo');
 
     //complete button
     const completeBtn = document.createElement('button');
     completeBtn.classList.add('complete-btn');
+    completeBtn.innerText = "complete";
 
     //todo content
     const todoContent = document.createElement('div');
@@ -62,7 +65,7 @@ function addToList(todoDiv) {
 //event handler
 function deleteTodo(e) {
     const btn = e.currentTarget;
-    ls.deleteTodo(btn.getAttribute('data-id'));
+    ls.deleteTodo(btn.getAttribute('data-id'));  //check where ls is coming from
     document.querySelector('#todos').innerHTML = '';
     loadTodos();
 }

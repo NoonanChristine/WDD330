@@ -6,9 +6,9 @@ function saveTodo(todo) {
 }
 
 function deleteTodo(id) {
-    const toDoList = getTodoList();
+    const toDoList = getTodoList();  //need to make this one usable
 
-    const updatedTodos = todoList.filter(todo => todo.id != id)
+    const updatedTodos = todoList.filter(todo => todo.id != id)  //return the list except the one you pass with the id that you got from the button. the id with the date
     localStorage.setItem('toDoList', JSON.stringify(updatedTodos));
 }
 
