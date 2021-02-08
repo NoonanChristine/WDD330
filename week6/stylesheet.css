@@ -9,13 +9,19 @@ h1 {
     font-size: x-large;
 }
 
-.todo {
-    border: solid black;
+.todo-filters {
+    border: 1px solid black;
 }
 
 button {
-    color: black;
+    background: none;
+    border: 0px;
 }
+
+#addBtn {
+    border: 1px solid black;
+}
+
 
 #todoInput true {
     text-decoration: line-through;
