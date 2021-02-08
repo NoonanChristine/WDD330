@@ -1,0 +1,23 @@
+.container {
+    margin: auto;
+    width: 50%;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: x-large;
+}
+
+.todo {
+    border: solid black;
+}
+
+button {
+    color: black;
+}
+
+#todoInput true {
+    text-decoration: line-through;
+    text-decoration-color: red;
+}

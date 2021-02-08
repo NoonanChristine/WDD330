@@ -1,19 +1,22 @@
-//import utils from './utilities.js';
+import utils from './utilities.js';
 import ls from './ls.js';
 
 document.querySelector('#addBtn').onclick = newTodo;
+document.querySelector('#allFilter').onclick = applyFilter;
+document.querySelector('#activeFilter').onclick = applyFilter;
+document.querySelector('#completedFilter').onclick = applyFilter;
 
 function loadTodos() {
-    const todoList = ls.getTodoList();
-
-    todoList.forEach(todo => {
-        const el = createTodoElement(todo)
-        addToList(el);
+    const todoList = ls.getTodoList();  //load to do's from local storage
+    todoList.forEach(todo => {  //iterate over the list
+        const el = createTodoElement(todo)  //call CreateTodoElement function for each item in the list
+        addToList(el); //add it to the list
     })
 }
 
+//create a new to-do
+//the functions do the actual creations of the parts of making the new to-do
 function newTodo() {
-    //console.log("we got here");  This works
     const todo = createTodo();
     const todoDiv = createTodoElement(todo);
     addToList(todoDiv);
@@ -22,12 +25,13 @@ function newTodo() {
 
 function createTodo() {
     const input = document.querySelector('#todoInput');
-    const newTodo = {id: Date.now(), content: input.value, complete: false} //will just change complete to true when click complete button. think about styling
+    const newTodo = {id: Date.now(), content: input.value, complete: false} //changes complete to true when complete button clicked
     input.value = '';
     return newTodo;
 }
 
 function createTodoElement(todo) {
+    //creating html for the to do list
     //todo div
     console.log(todo);
     const todoDiv = document.createElement('div');
@@ -65,33 +69,39 @@ function addToList(todoDiv) {
 //event handler
 function deleteTodo(e) {
     const btn = e.currentTarget;
-    ls.deleteTodo(btn.getAttribute('data-id'));  //check where ls is coming from
+    ls.deleteTodo(btn.getAttribute('data-id'));  
     document.querySelector('#todos').innerHTML = '';
     loadTodos();
 }
 
 
-//add a Todos class and make it the default export for the module
-//import helper functions here
-
-//add a variable to store our list of tasks to the Todos.js module
-//todoList = null;
-
-
-//create saveTodo(task, key) 
-
-
-// function getTodos(key) {
-
-// }
-
-//complete Todos.listTodos()
-
-//complete Todos.completeTodos()
-
-//complete Todos.removeTodos()
-
-//complete Todos.filterTodos()
+function completeTodo(e) {
+    const btn = e.currentTarget;
+    ls.getTodoList.addEventListener('click',function(ev) {
+        if(ev.target.tagName === 'data-id') {
+            ev.target.classList.toggle('checked');
+        }
+    }, false);}
 
 
+function applyFilter(e) {
+    //clear the list
+    document.querySelector('#todos').innerHTML = '';
+    
+    //declare variables
+    let filteredTodos = [];
+    const allTodos = ls.getTodoList();
 
+    //check which filter to apply
+    if (e.currentTarget.id == 'activeFilter') {
+        filteredTodos = utils.activeFilter(allTodos)
+    } else if (e.currentTarget.id == 'allFilter') {
+        filteredTodos = allTodos;
+    }
+
+    //draw the list
+    filteredTodos.forEach(todo => {
+        const el = createTodoElement(todo)
+        addToList(el)
+    })
+}

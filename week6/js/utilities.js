@@ -1,7 +1,11 @@
-//create DOM manipulation helper functions here
+// the filters
+
+function activeFilter (todos) {
+    return todos.filter(todo => {
+        return !todo.completed
+    })
+}
 
 export default {
-    saveTodo,
-    getTodoList,
-    deleteTodo
+    activeFilter
 }
