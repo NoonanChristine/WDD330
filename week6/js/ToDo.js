@@ -6,8 +6,13 @@ document.querySelector('#allFilter').onclick = applyFilter;
 document.querySelector('#activeFilter').onclick = applyFilter;
 document.querySelector('#completedFilter').onclick = applyFilter;
 
+window.addEventListener("load", (e) =>{
+    loadTodos();
+});
+
 function loadTodos() {
     const todoList = ls.getTodoList();  //load to do's from local storage
+    document.querySelector('#todos').innerHTML = '';
     todoList.forEach(todo => {  //iterate over the list
         const el = createTodoElement(todo)  //call CreateTodoElement function for each item in the list
         addToList(el); //add it to the list
@@ -19,8 +24,9 @@ function loadTodos() {
 function newTodo() {
     const todo = createTodo();
     const todoDiv = createTodoElement(todo);
-    addToList(todoDiv);
+    //addToList(todoDiv);
     ls.saveTodo(todo);
+    loadTodos();
 }
 
 function createTodo() {
@@ -41,6 +47,7 @@ function createTodoElement(todo) {
     const completeBtn = document.createElement('button');
     completeBtn.classList.add('complete-btn');
     completeBtn.innerText = "complete";
+    completeBtn.onclick = completeTodo;
 
     //todo content
     const todoContent = document.createElement('div');
@@ -76,12 +83,14 @@ function deleteTodo(e) {
 
 
 function completeTodo(e) {
-    const btn = e.currentTarget;
-    ls.getTodoList.addEventListener('click',function(ev) {
-        if(ev.target.tagName === 'data-id') {
-            ev.target.classList.toggle('checked');
-        }
-    }, false);}
+    const btn = e.currentTarget;  //if get parent. and the child has the id number
+        console.log("got here");
+        ls.completeTodo(btn.getAttribute('data-id'));
+        e.target.parentNode.querySelector(".todo-content").classList.toggle('checked');
+        //if(e.target.tagName === 'data-id') {
+            console.log(e.target.parentNode);
+       // }
+    }
 
 
 function applyFilter(e) {
@@ -97,6 +106,8 @@ function applyFilter(e) {
         filteredTodos = utils.activeFilter(allTodos)
     } else if (e.currentTarget.id == 'allFilter') {
         filteredTodos = allTodos;
+    } else if (e.currentTarget.id == 'completedFilter') {
+        filteredTodos = utils.completedFilter(allTodos)
     }
 
     //draw the list
