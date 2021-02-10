@@ -23,7 +23,21 @@ button {
 }
 
 
-#todoInput true {
+.checked {
     text-decoration: line-through;
     text-decoration-color: red;
+}
+
+#todos {
+    border: 1px solid black;
+}
+
+button.complete-btn {
+    float: left;
+    width: 33%;
+}
+
+div.todo-content {
+    float: left;
+    width: 33%;
 }

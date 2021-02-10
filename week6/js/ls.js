@@ -11,6 +11,19 @@ function deleteTodo(id) {
     localStorage.setItem('toDoList', JSON.stringify(updatedTodos));
 }
 
+function completeTodo(id) {
+    const toDoList = getTodoList();
+    const newToDoList = toDoList.map((item)=>{
+        if (item.id == id) {
+            item.completed = true;
+        } 
+        console.log(id);
+        console.log(item.id);
+        return item;
+    })
+    console.log(newToDoList);
+}
+
 //read todo list out of local storage
 //when get out of local storage it's a string
 function getTodoList() {
@@ -27,7 +40,8 @@ function getTodoList() {
 export default {
     saveTodo, //return an object that has a property saveTodo. Will have key value of saveTodo function
     getTodoList,
-    deleteTodo
+    deleteTodo,
+    completeTodo
 }
 
 
