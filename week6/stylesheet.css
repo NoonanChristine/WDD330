@@ -41,20 +41,25 @@ button.complete-btn {
     float: left;
     width: 10%;
     border: 1px solid black;
-    padding-top: 10px;
     border-width: 2px;
     margin-right: 25%;
 }
 
+div.todo {
+    padding-top: 10px;
+}
 
 div.todo-content {
     float: left;
     width: 33%;
 }
 
-button.complete-btn :checked {
-    background-color: blue;
+div.todo-filters {
+    display: block;
+    padding: 5px;
 }
+
+
 
 #todoInput {
     width: 90%;

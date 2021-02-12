@@ -7,6 +7,7 @@ document.querySelector('#activeFilter').onclick = applyFilter;
 document.querySelector('#completedFilter').onclick = applyFilter;
 
 window.addEventListener("load", (e) =>{
+    printTotal(ls.getTodoList().length);
     loadTodos();
 });
 
@@ -26,6 +27,7 @@ function newTodo() {
     const todoDiv = createTodoElement(todo);
     //addToList(todoDiv);
     ls.saveTodo(todo);
+    printTotal(ls.getTodoList().length);
     loadTodos();
 }
 
@@ -36,10 +38,7 @@ function createTodo() {
     console.log("logged right before");
     input.value = '';
     return newTodo;
-
 }
-
-
 
 function createTodoElement(todo) {
     //creating html for the to do list
@@ -47,9 +46,6 @@ function createTodoElement(todo) {
     console.log(todo);
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo');
-
-
-    
 
     //todo content
     const todoContent = document.createElement('div');
@@ -60,7 +56,7 @@ function createTodoElement(todo) {
     const completeBtn = document.createElement('button');
     completeBtn.classList.add('complete-btn');
     completeBtn.setAttribute('data-id', todo.id);
-    completeBtn.innerText = " ";
+    completeBtn.innerText = "done";
     completeBtn.onclick = completeTodo;
     if(todo.complete == true) {
         todoContent.classList.add('checked');
@@ -83,6 +79,7 @@ function createTodoElement(todo) {
 function addToList(todoDiv) {
     //add to the document
     document.querySelector('#todos').appendChild(todoDiv);
+    
 }
 
 //event handler
@@ -90,29 +87,18 @@ function deleteTodo(e) {
     const btn = e.currentTarget;
     ls.deleteTodo(btn.getAttribute('data-id'));  
     document.querySelector('#todos').innerHTML = '';
+
+    printTotal(ls.getTodoList().length);
+
     loadTodos();
 }
-
 
 function completeTodo(e) {
     const btn = e.currentTarget;  //if get parent. and the child has the id number
         ls.completeTodo(btn.getAttribute('data-id'));
         document.querySelector('#todos').innerHTML = '';
         loadTodos();
-        
-        //added code here.  trying to make it true
-        //e.target.parentNode.querySelector(".todo-content").classList.createTodo(true);
-        //if(e.target.tagName === 'data-id') {
-            //console.log(e.target.parentNode);
-       // }
-
-
-       //trying to add code here//********** */
-    //    const input = document.querySelector('#todoInput');
-    //    const newTodo = {id: Date.now(), content: input.value, complete: true}
-    //    return newTodo;
     }
-
 
 function applyFilter(e) {
     //clear the list
@@ -130,10 +116,15 @@ function applyFilter(e) {
     } else if (e.currentTarget.id == 'completedFilter') {
         filteredTodos = utils.completedFilter(allTodos)
     }
-
+    //console.log(filteredTodos.length);
+    printTotal(filteredTodos.length);
     //draw the list
     filteredTodos.forEach(todo => {
         const el = createTodoElement(todo)
         addToList(el)
     })
+}
+
+function printTotal(list) {
+    document.getElementById("count").innerHTML = list + " task(s)";
 }

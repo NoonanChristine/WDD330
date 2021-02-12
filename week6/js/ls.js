@@ -26,11 +26,6 @@ function completeTodo(id) {
     localStorage.setItem('toDoList', JSON.stringify(newToDoList));
 }
 
-function updatedTodoList(newToDoList) {
-
-}
-
-
 //read todo list out of local storage
 //when get out of local storage it's a string
 function getTodoList() {
@@ -42,11 +37,6 @@ function getTodoList() {
     }
 
     return todoList;
-}
-
-function countListItems() {
-    const count = localStorage.getItem('toDoList');
-
 }
 
 
