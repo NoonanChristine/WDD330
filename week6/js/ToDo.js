@@ -32,9 +32,14 @@ function newTodo() {
 function createTodo() {
     const input = document.querySelector('#todoInput');
     const newTodo = {id: Date.now(), content: input.value, complete: false} //changes complete to true when complete button clicked
+    console.log(newTodo);
+    console.log("logged right before");
     input.value = '';
     return newTodo;
+
 }
+
+
 
 function createTodoElement(todo) {
     //creating html for the to do list
@@ -43,16 +48,23 @@ function createTodoElement(todo) {
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo');
 
-    //complete button
-    const completeBtn = document.createElement('button');
-    completeBtn.classList.add('complete-btn');
-    completeBtn.innerText = "complete";
-    completeBtn.onclick = completeTodo;
+
+    
 
     //todo content
     const todoContent = document.createElement('div');
     todoContent.innerText = todo.content;
     todoContent.classList.add('todo-content');
+
+    //complete button
+    const completeBtn = document.createElement('button');
+    completeBtn.classList.add('complete-btn');
+    completeBtn.setAttribute('data-id', todo.id);
+    completeBtn.innerText = " ";
+    completeBtn.onclick = completeTodo;
+    if(todo.complete == true) {
+        todoContent.classList.add('checked');
+    }
 
     //delete button
     const deleteBtn = document.createElement('button');
@@ -84,12 +96,21 @@ function deleteTodo(e) {
 
 function completeTodo(e) {
     const btn = e.currentTarget;  //if get parent. and the child has the id number
-        console.log("got here");
         ls.completeTodo(btn.getAttribute('data-id'));
-        e.target.parentNode.querySelector(".todo-content").classList.toggle('checked');
+        document.querySelector('#todos').innerHTML = '';
+        loadTodos();
+        
+        //added code here.  trying to make it true
+        //e.target.parentNode.querySelector(".todo-content").classList.createTodo(true);
         //if(e.target.tagName === 'data-id') {
-            console.log(e.target.parentNode);
+            //console.log(e.target.parentNode);
        // }
+
+
+       //trying to add code here//********** */
+    //    const input = document.querySelector('#todoInput');
+    //    const newTodo = {id: Date.now(), content: input.value, complete: true}
+    //    return newTodo;
     }
 
 

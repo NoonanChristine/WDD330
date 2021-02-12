@@ -2,13 +2,13 @@
 
 function activeFilter (todos) {
     return todos.filter(todo => {
-        return !todo.completed
+        return !todo.complete
     })
 }
 
 function completedFilter (todos) {
     return todos.filter(todo => {
-        return todo.completed
+        return todo.complete
     })
 }
 

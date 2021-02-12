@@ -15,14 +15,21 @@ function completeTodo(id) {
     const toDoList = getTodoList();
     const newToDoList = toDoList.map((item)=>{
         if (item.id == id) {
-            item.completed = true;
+            item.complete = !item.complete;
         } 
         console.log(id);
         console.log(item.id);
         return item;
     })
-    console.log(newToDoList);
+    console.log(newToDoList);   
+    //return newToDoList; //need to put into updatedTodoList function so the 'true' value is returned
+    localStorage.setItem('toDoList', JSON.stringify(newToDoList));
 }
+
+function updatedTodoList(newToDoList) {
+
+}
+
 
 //read todo list out of local storage
 //when get out of local storage it's a string
@@ -36,6 +43,12 @@ function getTodoList() {
 
     return todoList;
 }
+
+function countListItems() {
+    const count = localStorage.getItem('toDoList');
+
+}
+
 
 export default {
     saveTodo, //return an object that has a property saveTodo. Will have key value of saveTodo function

@@ -1,12 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
+
+
 .container {
     margin: auto;
     width: 50%;
     padding: 5px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Handlee', cursive;
+    background: #FFFFCC;
 }
 
 h1 {
-    font-size: x-large;
+    font-size: xx-large;
+    text-align: center;
 }
 
 .todo-filters {
@@ -34,10 +39,23 @@ button {
 
 button.complete-btn {
     float: left;
-    width: 33%;
+    width: 10%;
+    border: 1px solid black;
+    padding-top: 10px;
+    border-width: 2px;
+    margin-right: 25%;
 }
+
 
 div.todo-content {
     float: left;
     width: 33%;
+}
+
+button.complete-btn :checked {
+    background-color: blue;
+}
+
+#todoInput {
+    width: 90%;
 }
