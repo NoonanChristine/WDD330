@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 13 Notes</title>
+    <p>Note: To see output, please open developer tools</p>
+</head>
+<body>
+
+    <script>
+        function square(x) {
+            return x*x;
+        }
+    console.log(square.length);
+
+    function sayHello(){
+       return `Hello, my name is ${ this.name }`;
+    }
+
+    const clark = { name: 'Clark' };
+    const bruce = { name: 'Bruce' };
+
+    console.log(sayHello.call(clark));
+    console.log(sayHello.call(bruce));
+
+    function sayHelloTwo(greeting='Hello'){
+        return `${ greeting }, my name is ${ this.name }`;
+    }
+
+    console.log(sayHelloTwo.call(clark, 'How do you do'));
+    console.log(sayHello.call(bruce));
+
+    console.log(square.call(null, 4));
+    console.log(square.apply(null, [4]));
+
+    console.log(square.description = 'Squares a number that is provided as an argument');
+
+    function square(x){
+        square.cache = square.cache || {};
+        if (!square.cache[x]) {
+            square.cache[x] = x*x;
+        }
+        return square.cache[x]
+    }
+
+    console.log(square(3));
+    console.log(square(-11));
+    console.log(square.cache);
+
+    (function(){
+        const temp = 'World';
+        console.log(`Hello ${temp}`);
+    })();
+
+    let a = 1;
+    let b = 2;
+    (()=>{
+        const temp = a;
+        a = b;
+        b = temp;
+    })();
+
+    console.log(a);
+    console.log(b);
+
+    //console.log(temp);  //shows that it is not defined here
+
+    (function() {
+        const name = 'Peter Parker'; // This might be obtained from a cookie in reality
+        const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday', 'Friday','Saturday'];
+        const date = new Date(),today = days[date.getDay()];
+        console.log(`Welcome back ${name}. Today is ${today}`);
+    })();
+    
+    (function() { // block A
+        const name = 'Block A';
+        console.log(`Hello from ${name}`);
+    }());
+
+    (function() { // block B
+        const name = 'Block B';
+        console.log(`Hello from ${name}`);
+    }());
+
+    function party(){
+        console.log('Wow this is amazing!');
+        party = function(){
+            console.log('Been there, got the T-Shirt');
+        }
+    }
+
+    console.log(party());
+    console.log(party());
+
+    const beachParty = party;
+    console.log(beachParty());
+
+    function ride(){
+        if (window.unicorn) { 
+            ride = function(){
+            return 'Riding on a unicorn is the best!';
+            }
+        } else {
+            ride = function(){
+            return 'Riding on a pony is still pretty good';
+            }
+        }
+        return ride();
+    }
+
+    console.log(ride());
+
+    console.log(ride);
+
+    function factorial(n) {
+        if (n === 0) {
+            return 1;
+        } else {
+            return n * factorial(n - 1);
+        }
+    }
+
+    function collatz(n, sequence=[n]) {
+        if (n === 1){
+            return `Sequence took ${sequence.length} steps. It was ${sequence}`;
+        }
+        if (n%2 === 0) {
+            n = n/2;
+        } else { 
+            n = 3*n + 1;
+        }
+        return collatz(n,[...sequence,n]);
+    }
+
+    console.log(collatz(18));
+
+    function wait(message, callback, seconds){
+        setTimeout(callback,seconds * 1000);
+        console.log(message);
+    }
+
+    function selfDestruct(){
+        //console.log('BOOOOM!');
+    }
+
+    wait('This tape will self-destruct in five seconds ... ', selfDestruct, 5);
+    console.log(('Hmmm, should I accept this mission or not ... ?'));
+
+    wait('This tape will self-destruct immediately ... ', selfDestruct, 0);
+    console.log('Hmmm, should I accept this mission or not ... ?');
+
+    const dice = {
+        sides: 6,
+        roll() {
+            return Math.floor(this.sides * Math.random()) + 1;
+        }
+    }
+
+    const promise = new Promise( (resolve,reject) => {
+    const n = dice.roll();
+    setTimeout(() => {
+        (n > 1) ? resolve(n) : reject(n);
+        }, n*1000);
+    });
+
+    promise.then( result => console.log(`Yes! I rolled a ${result}`), result => console.log(`Drat! ... I rolled a ${result}`) );
+    promise.catch( result => console.log(`Drat! ... I rolled a ${result}`));
+
+    promise.then( result => console.log(`I rolled a ${result}`))
+    .catch( result => console.log(`Drat! ... I rolled a ${result}`));
+
+    async function loadGame(userName) {
+        try {
+            const user = await login(userName);
+            const info = await getPlayerInfo (user.id);
+            // load the game using the returned info
+        }
+        catch (error){
+            throw error;
+        }
+    }
+
+    function random(a,b=1) {
+        if (b === 1) {
+            [a,b] = [b,a];
+        } 
+        return Math.floor((b-a+1) * Math.random()) + a;
+    }
+
+    console.log(random(6));
+    console.log(random(10,20));
+    
+    function randomTwo(a,b,callback) {
+        if (b === undefined) b = a, a = 1; // if only one argument is supplied, assume the lower limit is 1
+            const result = Math.floor((b-a+1) * Math.random()) + a
+        if(callback) {
+            result = callback(result);
+        }
+        return result;
+    }
+
+    function square(n) {
+        return n*n;
+    }
+
+    console.log(random(1,10,square));
+    
+    function returnHello() {
+        console.log('returnHello() called');
+        return function() {
+            console.log('Hello World!');
+        }
+    }
+
+    console.log(returnHello());
+    const hello = returnHello();
+    console.log(returnHello());
+    console.log(hello());
+
+    function greeter(greeting = 'Hello') {
+        return function() {
+            console.log(greeting);
+        }
+    }
+
+    const englishGreeter = greeter();
+    console.log(englishGreeter());
+
+    const frenchGreeter = greeter('Bonjour');
+    console.log(frenchGreeter());
+
+    const germanGreeter = greeter('Guten Tag');
+    console.log(germanGreeter());
+
+    const outside = 'In the global scope';
+    function fn() {
+        const inside = 'In the function scope';
+    }
+    console.log(outside);
+    //console.log(inside); inside is not defined
+
+    function outer() {
+        const outside = 'Outside!';
+        function inner() {
+            const inside = 'Inside!';
+            console.log(outside);
+            console.log(inside);
+        }
+        console.log(outside);
+        inner();
+    }
+    
+    console.log(outer());
+
+    function outerTwo() {
+        const outside = 'Outside!';
+        function inner() {
+            const inside = 'Inside!';
+            console.log(outside);
+            console.log(inside);
+        }
+        return inner;
+    }
+
+    const closure = outerTwo();
+    console.log(closure);
+
+    function counter(start){
+        let i = start;
+        return function() {
+            return i++;
+        }
+    }
+
+    const count = counter(1);
+
+    console.log(count());
+    console.log(count());
+
+    function* fibonacci(a,b) {
+        let [ prev,current ] = [ a,b ];
+        while(true) {
+            [prev, current] = [current, prev + current];
+            yield current;
+        }
+    }
+
+    const sequence = fibonacci(1,1);
+
+    console.log(sequence.next());
+    console.log(sequence.next());
+    console.log(sequence.next());
+
+    for (n of sequence) {
+        if (n > 10) break;
+        console.log(n);
+    }
+
+    function reverse(string) {
+        return string.split('').reverse().join('');
+    }
+
+    const message = 'Hello JavaScript';
+    console.log(reverse(message));
+    console.log(message);
+
+    function hypotenuse(a,b) {
+        return Math.sqrt(square(a) + square(b));
+    }
+    console.log(hypotenuse(3,4));
+
+    function sum(array, callback) {
+        if(callback) {
+            array = array.map(callback);
+        }
+        return array.reduce((a,b) => a + b );
+    }
+
+    console.log(sum([1,2,3]));
+    console.log(sum([1,2,3], square));
+
+    function mean(array) {
+        return sum(array)/array.length;
+    }
+
+    console.log(mean([1,2,3]));
+
+    function variance(array) {
+        return sum(array,square)/array.length - square(mean(array))
+    }
+
+    console.log(variance([1,2,3]));
+
+    function multiplier(x){
+        return function(y){
+            return x*y;
+        }
+    }
+    
+    doubler = multiplier(2);
+    //console.log(doubler(10));
+
+    tripler = multiplier(3);
+    //console.log(tripler(3));
+
+    function power(x) {
+        return function(power) {
+            return Math.pow(x,power);
+        }
+    }
+
+    twoExp = power(2);
+    console.log(twoExp(5));
+
+    tenExp = power(10);
+    console.log(tenExp(6));
+
+    console.log(power(3)(5));
+
+    function multiplier(x,y) {
+        return x * y;
+    }
+    
+    const tax = multiplier(0.22,400);
+    console.log(tax);
+
+    function multiplierTwo(x,y) {
+        if (y === undefined) {
+            return function(z) {
+            return x * z;
+            }
+        } else {
+            return x * y;
+        }
+    }
+
+    calcTax = multiplier(0.22);
+   //calcTax(400);
+    //console.log(calcTax);
+
+    function curry(func,...oldArgs) {
+    return function(...newArgs) {
+            const allArgs = [...oldArgs,...newArgs];
+            return func(...allArgs);
+        }
+    }
+
+    const divider = (x,y) => x/y;
+    console.log(divider(10,5));
+    const reciprocal = curry(divider,1);
+    console.log(reciprocal(2));
+
+
+
+    </script>
+        
+    
+</body>
+</html>
