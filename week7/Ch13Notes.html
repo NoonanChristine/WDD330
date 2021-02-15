@@ -7,6 +7,102 @@
     <title>Chapter 13 Notes</title>
 </head>
 <body>
-    
+    <h1>Clients and Servers</h1>
+    <ul>
+        <li>internet can be separated into to parts - clients and servers</li>
+        <li>client is the web browser</li>
+        <li>server processes the request and sends the response</li>
+        when requesting resources using Ajax, server is required
+    </ul>
+
+    <h1>A Brief History of Ajax</h1>
+    <ul>
+        <li>when WWW was started, web pages were statis</li>
+        <li>'Ajax' was coined by Jesse James Garrett in 2005 in the article “Ajax: A New Approach to Web Applications”</li>
+        <ul>
+            <li>Asynchronous: when request is sent, program doesn't have to wait for a response and can keep running</li>
+            <li>JavaScripts: Ajax enabled to send and receive requests from the server</li>
+            <li>XML: most often used to return data. JSON is used these days</li>
+        </ul>
+    </ul>
+
+    <h1>Communicating with the Server Using the Fetch API</h1>
+    <ul>
+        <li>living standard for requesting and sending data asynchronously</li>
+    </ul>
+    <h2>Basic Usage</h2>
+    <ul>
+        <li>provides a global fetch() method that has only one argument</li>
+        <li>because it's a promise, can also use a catch to deal with errors</li>
+    </ul>
+    <h2>Response Interface</h2>
+    <ul>
+        <li>deals with the object that's returned when the promise is fulfilled</li>
+        <li>each response has an ok property to see if response is successful</li>
+        <li>Properties of Response object</li>
+        <ul>
+            <li>Headers: object containing any headers associated with the response</li>
+            <li>URL: string containing URL of response</li>
+            <li>Redirected: a boolean value that specifies if the response is the result of a redirect</li>
+            <li>Type: string value of 'basic', 'cors', 'error', or 'opaque'</li>
+        </ul>
+    </ul>
+    <h2>Redirects</h2>
+    <ul>
+        <li>redirect() method is used to redirect to another URL</li>
+        <li>creates a new promise</li>
+        <li>no support for this method in any browser</li>
+    </ul>
+    <h2>Text Responses</h2>
+    <ul>
+        <li>text() method takes a stream of text from the response and reads it to completion and then returns a promise that resolves to a USVSting object</li>
+    </ul>
+    <h2>File Responses</h2>
+    <ul>
+        <li>blob() method used to read a file of raw data such as image or spreadsheet</li>
+        <li>returns a promise that resolves the object</li>
+    </ul>
+    <h2>JSON Responses</h2>
+    <ul>
+        <li>Most common format for AJAX responses</li>
+        <li>transforms stream of JSON data into a promise that resolves to a JavaScript object</li>
+    </ul>
+    <h2>Creating Response Objects</h2>
+    <ul>
+        <li>created using a constructor function</li>
+        <li>first argument is data to be returned</li>
+        <li>second argument is object that can be used to provide values for any of the properties listed above</li>
+        <li>useful for testing purposes</li>
+    </ul>
+    <h1>Request Interface</h1>
+    <ul>
+        <li>created using the Request() constructor</li>
+        <ul>
+            <li>URL: The URL of the requested resource</li>
+            <li>method: a string that specifies which HTTP method should be used for the request</li>
+            <li>headers: a Headers object that provides details of the request's headers</li>
+            <li>mode: Allows you to specify if CORS is used or not</li>
+            <li>cache: Allows you to specify how the request will use the browser's cache</li>
+            <li>credentials: Lets you specify if cookies should be allowed with the request</li>
+            <li>redirect: Specifies what to do if the response returns a redirect. Follow, error, or manual.</li>
+        </ul>
+    </ul>
+    <h2>Headers Interface</h2>
+    <ul>
+        <li>HTTP headers - used to pass on any additional info about request or response</li>
+        <li>file-type of resource, cookie info, authentication info, when resource last modified</li>
+    </ul>
+    <h1>Sending Data with Ajax</h1>
+    <ul>
+        <li>Usually a JSON string</li>
+        <li>most forms have an action attribute that specifies the URL to use if form sent without Ajax</li>
+    </ul>
+    <h1>Form Data</h1>
+    <ul>
+        <li>makes it easier to submit info using Ajax</li>
+        <li>FormData instance is created using a constructior function</li>
+        <li>If form is passed to constructor function as an argument, form data instance will serialize all data automatically</li>
+        <li>most helpful when form contains files to upload</li>
+    </ul>    
 </body>
 </html>
