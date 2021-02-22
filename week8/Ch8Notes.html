@@ -49,24 +49,24 @@
         <li>Must include a pre-state and a post-state.</li>
         <li>Exception to this “if there is a valid midpoint, it can be transitioned” rule is visibility</li>
     </ul>
-    <h1>The transition-duration Property</h1>
+    <h2>The transition-duration Property</h2>
     <ul>
         <li>Sets how long the transition will take</li>
         <li>200ms is generally considered the optimum time for a transition</li>
     </ul>
-    <h1>The transition-timing-function Property</h1>
+    <h2>The transition-timing-function Property</h2>
     <ul>
         <li>Lets you control the pace of the transition in even more granular detail.</li>
         <li>Most common timing functions include the key terms ease , linear , ease-in , ease-out , or ease-in-out</li>
         <li>Can also describe timing function more precisely by defining own cubic-bezier function</li>
         <li>Can divide the transition over equidistant steps</li>
     </ul>
-    <h1>The transition-delay Property</h1>
+    <h2>The transition-delay Property</h2>
     <ul>
         <li>Possible to introduce a delay before the transition begins</li>
         <li>A negative time delay that’s less than the duration of the entire transition will cause it to start immediately</li>
     </ul>
-    <h1>The transition Shorthand Property</h1>
+    <h2>The transition Shorthand Property</h2>
     <ul>
         <li>Shorthand for the four transition properties</li>
         <li>can be in any order</li>
@@ -91,7 +91,40 @@
         <li>An element must have at minimum an animation name for there to be an animation, and must also have a duration declared for the animation to be perceptible</li>
     </ul>
     <h1>Animation Properties</h1>
-    <ul></ul>
+    <ul>
+        <li>This property is used to attach an animation to an element</li>
+        <li>no quotes around the animation name in either the property value or the @keyframes at-rule</li>
+        <li>animation-duration defines the length of time (in seconds or milliseconds) an animation takes to complete one iteration</li>
+        <li>animation-name is the only required animation property to create an animation</li>
+    </ul>
+    <h2>animation-timing-function</h2>
+    <ul>
+        <li>determines how the animation will progress over its duration</li>
+        <li>options are the same as for transition-timing-function</li>
+    </ul>
+    <h2>animation-iteration-count</h2>
+    <ul>
+        <li>lets you define how many times the animation will play through</li>
+        <li>value is generally an integer</li>
+        <li>If omitted, it will default to 1</li>
+    </ul>
+    <h2>animation-direction</h2>
+    <ul>
+        <li>changes the behavior of the default or normal value for animation-direction</li>
+        <li>When animations are played in reverse, timing functions are also reversed</li>
+    </ul>
+    <h2>animation-delay</h2>
+    <ul>
+        <li>used to define how many milliseconds or seconds to wait before the browser begins the animation</li>
+        <li>The animation-fill-mode property defines what happens before the first animation iteration begins and after the last animation iteration concludes</li>
+        <li>By default, an animation has no effect on property values outside of when it’s iterating</li>
+        <li>available values are none , forwards , backwards , or both</li>
+    </ul>
+    <h2>The Shorthand animation Property</h2>
+    <ul>
+        <li>The animation property takes as its value a space-separated list of values for the longhand</li>
+        <li>avoid accidentally using any animation property key term such as forwards , running , or alternate</li>
+    </ul>
 
 
         
