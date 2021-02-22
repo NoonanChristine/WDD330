@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 12 Notes</title>
+</head>
+<body>
+   <h1>Canvas</h1>
+   <ul>
+       <li> draw anything we can imagine, all through JavaScript</li>
+       <li>gives the power to manipulate pixels in images and even video</li>
+       <li>first developed by Apple</li>
+   </ul>
+   <h2>Creating a canvas Element</h2>
+   <ul>
+       <li>first step  is to add a canvas element to the page</li>
+       <li>If not set, the canvas element will default to a width of 300 and a height of 150</li>
+   </ul>
+   <h2>Drawing on the Canvas</h2>
+   <ul>
+       <li>All drawing on canvas happens via the Canvas JavaScript API</li>
+   </ul>
+   <h2>Getting the Context</h2>
+   <ul>
+       <li>context is the place where drawing is rendered</li>
+       <li>Currently, there’s only wide support for drawing to a two-dimensional context</li>
+       <li>We obtain our drawing context by calling the getContext method and passing it the string "2d"</li>
+       <li>The object that’s returned by getContext is an instance of CanvasRenderingContext2D</li>
+   </ul>
+   <h2>Filling Brush with Color</h2>
+   <ul>
+       <li>fill brush with the strokeStyle or fillStyle properties</li>
+   </ul>
+   <h2>The Canvas Coordinate System</h2>
+   <ul>
+       <li>the coordinate system in the canvas element is different from the Cartesian coordinate system</li>
+       <li>the top-left corner is (0,0)</li>
+   </ul>
+   <h2>Anonymous Functions</h2>
+   <ul>
+       <li>much like regular functions except they are without names</li>
+       <li>means that the anonymous function is being bound to that event</li>
+   </ul>
+   <h2>Drawing Other Shapes by Creating Paths</h2>
+   <ul>
+       <li>can draw any shape we can imagine</li>
+       <li>no built-in method for drawing circles or other shapes</li>
+       <li>To draw more interesting shapes, we must first lay out the path of the shape</li>
+       <li>Pathscreate a blueprint for your lines, arcs, and shapes, but paths are invisible until they are given a stroke</li>
+   </ul>
+   <h2>Radians Explained</h2>
+   <ul>
+       <li>a unit used to measure angles</li>
+       <li>the symbol π denotes a measurement in radians</li>
+   </ul>
+   <h2>Saving Canvas Drawings</h2>
+   <ul>
+       <li>can use the API’s toDataURL method to save a drawing</li>
+   </ul>
+   <h2>Manipulating Images</h2>
+   <ul>
+       <li>really no different from using an img element</li>
+       <li>can use the getImageData method from the Canvas API to manipulate the pixels of that image</li>
+       <li>getImageData will return an ImageData object which contains three properties: width, height, and data</li>
+       <li>data contains information about the pixels in the ImageData object in the form of an array</li>
+       <li>Each pixel on the canvas will have four values in the data array, which correspond to that pixel’s R, G, B, and A values</li>
+   </ul>
+   <h2>Security Errors with getImageData</h2>
+   <ul>
+       <li>files loaded with the file:// protocol are considered to come from different domains, which is deemed a security error</li>
+       <li>security issue Chrome and Firefox are attempting to prohibit is a user on one domain manipulating images on another domain</li>
+   </ul>
+   <h2>Accessibility Concerns</h2>
+   <ul>
+       <li>major downside of canvas in its current form is its lack of accessibility</li>
+       <li>canvas doesn’t create a DOM node, is not a text-based format, and is essentially invisible to tools such as screen readers</li>
+   </ul>
+   <h1>SVG</h1>
+   <ul>
+       <li>stands forScalable Vector Graphics</li>
+       <li>a specific file format that allows you to describe vector graphics using XML</li>
+       <li>vector images preserve their quality even as you blow them up or shrink them down</li>
+   </ul>
+   <h2>Drawing in SVG</h2>
+   <ul>
+       <li>The viewBox attribute defines the starting location, width, and height of the SVG image</li>
+       <li>instead of creating SVG images by hand, we can use an image editor to help</li>
+   </ul>
+   <h1>Canvas versus SVG</h1>
+   <ul>
+       <li>best one - depends on what you're doing</li>
+       <li>Both canvas and SVG allow you to draw custom shapes, paths, and fonts</li>
+       <li>downside of canvas is that it operates in immediate mode</li>
+       <li>canvas is much faster than SVG</li>
+       <li>what you draw to SVG is accessible via the DOM</li>
+       <li>SVG also has a more complete set of tools</li>
+   </ul>
+   
+
+
+</body>
+</html>
