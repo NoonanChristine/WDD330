@@ -4,129 +4,83 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 9 Notes</title>
+    <title>Fetch</title>
 </head>
 <body>
-    <h1>The Window Object</h1>
-    <h2>The Browser Object Model</h2>
+    <h1>Using Fetch</h1>
     <ul>
-        <li>BOM for short - a collection of properties and methods that contain information about the browser and computer screen</li>
-        <li>creates pop-up windows</li>
-        <li>only makes sense in a browser environment.</li>
-        <li>can also refer to it using the keyword this in the global scope</li>
+        <li>The Fetch API provides a JavaScript interface for accessing and manipulating parts of the HTTP pipeline, such as requests and responses</li>
+        <li>also provides a global fetch() method</li>
+        <li>The Promise returned from fetch() won’t reject on HTTP error status even if the response is an HTTP 404 or 500</li>
+        <li>won’t send cross-origin cookies unless you set the credentials init option</li>
+        <li>The fetch() method can optionally accept a second parameter, an init object</li>
     </ul>
-    <h3>Going Global</h3>
+    <h2>Supplying Request Options</h2>
     <ul>
-        <li>Global variables can be accessed in all parts of the program</li>
-        <li>properties of a global object</li>
-        <li>in a browser environment the global object is the window object</li>
+        <li>fetch() method can optionally accept a second parameter (an init object) to control settings</li>
     </ul>
-    <h3>Dialogs</h3>
+    <h2>Sending a Request With Credentials Included</h2>
     <ul>
-        <li>there are three functions that produced dialogs in the browsers: alert() , confirm() and prompt()</li>
-        <li>The window.alert() method will pause the execution of the program and display a message in a dialog box</li>
-        <li>The window.confirm() method will stop the execution of the program and display a confirmation dialog that shows the message provided as an argument and gives the options of OK or Cancel</li>
-        <li>The window.prompt() method will stop the execution of the program</li>
-        <li>most browsers allow users to disable any dialogs from repeatedly appearing</li>
+        <li>add credentials: 'include' to the init object you pass to the fetch() method</li>
+        <li>Browsers should not send credentials in preflight requests</li>
     </ul>
-    <h2>Finding out browser information</h2>
+    <h2>Uploading JSON data</h2>
     <ul>
-        <li>The window object has a navigator property that returns a reference to the Navigator object</li>
-        <li>The Navigator object contains information about the browser being used</li>
+        <li>Use fetch() to POST JSON-encoded data</li>
     </ul>
-    <h3>Location, Location, Location</h3>
+    <h2>Uploading a File</h2>
     <ul>
-        <li>The window.location property is an object that contains information about the URL of the current page</li>
-        <li>This property is a read/write property, which means it can also be changed by assignment</li>
+        <li>Files can be uploaded using an HTML input type="file" input element, FormData() and fetch()</li>
     </ul>
-    <h2>Browser History</h2>
+    <h2>Uploading Multiple Files</h2>
     <ul>
-        <li>The window.history property can be used to access information about any previously visited pages in the current browser session</li>
-        <li>The window.history.length property shows how many pages have been visited before arriving at the current page</li>
-        <li>The window.history.forward() and window.history.back() methods  can be used to navigate forwards and backwards by one page</li>
+        <li>Files can be uploaded using an HTML input type="file" multiple input element, FormData() and fetch()</li>
     </ul>
-    <h2>Controlling Windows</h2>
+    <h2>Processing a text file line by line</h2>
     <ul>
-        <li>A new window can be opened using the window.open() method</li>
-        <li>can also be assigned to a variable, so the window can then be referenced later in the code</li>
-        <li>The close() method can be used to close a window</li>
-        <li>Also possible to move a window using the window.moveTo() method</li>
-        <li>Can resize a window using the window.resizeTo() method</li>
+        <li>The chunks that are read from a response are not broken at line boundaries and are Uint8Arrays</li>
     </ul>
-    <h3>Screen Information</h3>
+    <h2>Checking that the fetch was successful</h2>
     <ul>
-        <li>The window.screen object contains information about the screen the browser is displayed on</li>
-        <li>The availHeight and availWidth can be used to find the height and width of the screen</li>
-        <li>The colorDepth property can be used to find the color bit depth of the user’s monitor</li>
+        <li>A fetch() promise will reject with a TypeError when a network error is encountered or CORS is misconfigured on the server-side</li>
+        <li>accurate check for a successful fetch() would include checking that the promise resolved and then checking that the Response.ok property has value of true</li>
     </ul>
-    <h3>The Document Object</h3>
+    <h2>Supplying Your Own Request Object</h2>
     <ul>
-        <li>Each window object contains a document object</li>
-        <li>This object has properties and methods that deal with the page that has been loaded into the window</li>
+        <li>can create a request object using the Request() constructor, and pass that in as a fetch() method argument</li>
+        <li>Request() accepts exactly the same parameters as the fetch() method</li>
     </ul>
-    <h3>document.write()</h3>
+    <h2>Headers</h2>
     <ul>
-        <li>The write() method writes a string of text to the page</li>
-        <li>Use of document.write() is heavily frowned upon</li>
+        <li>The Headers interface allows creation of own headers object via the Headers() constructor</li>
+        <li>headers object is a simple multi-map of names to values</li>
+        <li>All Headers methods throw a TypeError if a header name is used and is not a valid HTTP Header name</li>
     </ul>
+    <h2>Guard</h2>
+    <ul>
+        <li>headers'objects have a guard property</li>
+        <li>affects which mutation operations are allowed on the headers object</li>
+    </ul>
+    <h2>Response Objects</h2>
+    <ul>
+        <li>Response instances are returned when fetch() promises are resolved</li>
+        <li>can also be created programmatically via JavaScript</li>
+    </ul>
+    <h2>Body</h2>
+    <ul>
+        <li>Both requests and responses may contain body data</li>
+        <li>an instance of ArrayBuffer, ArrayBufferView, Blob/File, string, URLSearchParams, or FormData</li>
+        <li>Request bodies can be set by passing body parameters</li>
+    </ul>
+    <h2>Feature Detection</h2>
+    <ul>
+        <li>Fetch API support can be detected by checking for the existence of Headers, Request, Response or fetch() on the Window or Worker scope</li>
+    </ul>
+    <h2>Polyfill</h2>
+    <ul>
+        <li>recreates the functionality for non-supporting browsers</li>
+    </ul>
+  
 
-    <h2>Cookies</h2>
-    <ul>
-        <li>Cookies are small files that are saved locally on a user’s computer.</li>
-        <li>invented by Netscape as a way of getting round HTTP being a stateless protocol</li>
-        <li>can be used for personalizing a user’s browsing experience, storing user preferences, keeping track of user choices, authentication and tracking users</li>
-        <li>take the form of a text file that contain a list of name/value pairs separated by semicolons</li>
-    </ul>
-    <h3>Creating Cookies</h3>
-    <ul>
-        <li>To create a cookie assign it to JavaScript’s “cookie jar” using the document.cookie property</li>
-        <li>The document.cookie property acts like a special type of string</li>
-    </ul>
-    <h3>Changing Cookie Values</h3>
-    <ul>
-        <li>Value can be changed by reassigning it to document.cookie using the same name but a different value</li>
-    </ul>
-    <h3>Reading Cookies</h3>
-    <ul>
-        <li>To see the current contents of the cookie jar enter document.cookie</li>
-    </ul>
-    <h3>Cookie Expiry Dates</h3>
-    <ul>
-        <li>Cookies are session cookies by default</li>
-        <li>deleted once a browser session is finished</li>
-        <li>can be made persistent</li>
-    </ul>
-    <h3>The Path and Domain of Cookies</h3>
-    <ul>
-        <li>By default cookies can only be read by pages inside the same directory and domain as the file was set</li>
-    </ul>
-    <h3>Secure Cookies</h3>
-    <ul>
-        <li>Adding the string ; secure to the end of a cookie ensures it’s only transmitted over a secure HTTPS network</li>
-    </ul>
-    <h3>Deleting Cookies</h3>
-    <ul>
-        <li>set it to expire at a time in the past</li>
-        <li>If it's a session cookie it will expire when the tab or window is closed</li>
-    </ul>
-    <h2>Timing Functions</h2>
-    <h3>setTimeout()</h3>
-    <ul>
-        <li>accepts a callback to a function as its first parameter and a number of milliseconds as its second parameter</li>
-    </ul>
-    <h3>setInterval()</h3>
-    <ul>
-        <li>works similarly to window.setTimeout() except it will repeatedly invoke the callback function after every given number of milliseconds</li>
-    </ul>
-    <h3>Animation</h3>
-    <ul>
-        <li>setTimeOut() and setInterval() methods can be used to animate elements on a web page</li>
-    </ul>
-    <h3>requestAnimationFrame()</h3>
-    <ul>
-        <li>works similarly to window.setInterval()</li>
-        <li>makes the most of the browser’s built-in graphics-handling capabilities</li>
-        <li> does not run the animation when the tab is inactive</li>
-    </ul>
 </body>
 </html>
