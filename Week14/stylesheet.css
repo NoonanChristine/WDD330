@@ -1,0 +1,23 @@
+h1 {
+    text-align: center;
+}
+
+img {
+    width: 50%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: blue;
+    padding: 10px;
+}
+
+.grid-item {
+    background-color: blueviolet;
+    border: 1px solid rgba(0,0,0,0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
