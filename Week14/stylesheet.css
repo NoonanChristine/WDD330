@@ -1,5 +1,13 @@
-h1 {
+@import url("https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600&display=swap");
+
+html {
+    background-color: #253C78;
+    color: #FFF07C;
+}
+
+h1, h2 {
     text-align: center;
+    font-family: 'Zilla Slab', serif;
 }
 
 img {
@@ -9,12 +17,12 @@ img {
 .grid-container {
     display: grid;
     grid-template-columns: auto auto;
-    background-color: blue;
+    background-color: #FFF07C;
     padding: 10px;
 }
 
 .grid-item {
-    background-color: blueviolet;
+    background-color: #A76F25;
     border: 1px solid rgba(0,0,0,0.8);
     padding: 20px;
     font-size: 30px;
