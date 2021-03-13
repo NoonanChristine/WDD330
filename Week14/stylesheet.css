@@ -29,5 +29,18 @@ img {
     text-align: center;
 }
 
+.items-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    background-color: #FFF07C;
+    padding: 10px;
+}
 
+.living-item {
+    background-color: white;
+    border: 1px solid rgba(0,0,0,0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
 
