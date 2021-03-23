@@ -1,0 +1,16 @@
+td{
+    min-width:200px;
+    min-height:100px;
+    font-size:4em;
+}
+tr{
+    height: 100px;
+    text-align:center;
+}
+.row1, .row2{
+    border-bottom:2px solid blue;
+}
+.col{
+    border-right:2px solid blue;
+    border-left:2px solid blue;
+}

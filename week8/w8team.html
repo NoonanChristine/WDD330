@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 8 Team Activity</title>
+    <style></style>
+</head>
+<body>
+    <h1>Week 8 Team Activity - Star Wars API</h1>
+
+    <div id="starWars">
+        <h2>Star Wars List</h2>
+        <ul id="starWarsList">
+
+        </ul>
+        <button id="starWarsBtn" onclick="getStarWars('https://swapi.dev/api/starships')">List Star Wars Ships</button>
+    </div>
+
+    <script>
+        const btn = document.querySelector('#starWarsBtn');
+
+        async function getStarWars(url) {
+            try {
+                const response = await fetch(url);
+                console.log(response);
+                if (!response.ok) {
+                    throw Error(response.statusText)
+                } else {
+                    const fetchJson = await response.json();
+                    console.log(fetchJson);
+                    renderStarWars(fetchJson)
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        function renderStarWars(data) {
+            const starWarsContainer = document.querySelector('#starWarsList');
+
+            if (data.next) {
+                btn.textContent = "Show More";
+                btn.setAttribute('onclick', `getStarWars('${data.next}')`)
+            }
+
+            data.results.forEach( ship => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML =
+                `
+                    <span class="ship-name">${ship.name}</span>
+                    <button class="view-btn" onclick="getDetails('${ship.name}', '${ship.url}')">View</button>
+                `
+                listItem.id = ship.name;
+                starWarsContainer.appendChild(listItem);
+            })
+        }
+
+        function getDetails(id, url)  {
+            fetch(url)
+                .then( res => res.json() )
+                .then( json => {
+                    console.log('DETAILS ', json)
+                    
+                    
+                        for (const [key, value] of Object.entries(json)) {
+                            var li = document.getElementById(id);
+                            var div = document.createElement('div');
+                            div.innerHTML = ` ${key}: ${json[key]} `;
+                            li.appendChild(div);
+                        }
+
+                             
+                    li.lastElementChild.remove();
+                    
+                })
+        }
+
+    </script>
+
+</body>
+
+</html>
