@@ -41,7 +41,7 @@ function getData(type) {  //type is going to be bug or fish
                 let bug = result[i];
                 let name = bug.name["name-USen"];
                 let price = bug.price;
-                let sellOrSave = price < 800 ? "<div class='sell'>sell</div>" : "<div class='save'>save</div>"; //? is the 'if'. only works if there are two conditions
+                let sellOrSave = price < 800 ? "<div class='sell'>Sell!</div>" : "<div class='save'>save</div>"; //? is the 'if'. only works if there are two conditions
                 let imageURI = bug["image_uri"]; //because of underscore have to use different syntax
                 //create template string
                 //let handleSell = `var currAmountDiv = document.querySelector('#amount'); var currAmount = localStorage.getItem("amount"); localStorage.setItem("amount", currAmount); currAmountDiv.innerText = currAmount;`;

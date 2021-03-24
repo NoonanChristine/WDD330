@@ -61,11 +61,17 @@ img {
 
 .sell {
     color:#317B22;
-    text-shadow: 1px 1px #FFF07C;
+    text-shadow: .75px .75px #FFF07C;
 }
 
 .save {
     font-size: large;
+}
+
+.returnHome {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 
