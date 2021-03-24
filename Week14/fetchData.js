@@ -1,14 +1,15 @@
 function getData(type) {  //type is going to be bug or fish
     let url = "https://acnhapi.com/v1/" + type;
+    console.log(type);
 
     //local storage -> amount = 0
 
-    let amount = localStorage.getItem("amount");
-    if(amount !=null) {
-        document.querySelector("#amount").innerText = amount;
-    } else {
-        localStorage.setItem("amount", 0); //value setting to key ->0.  look in application in developer tools
-    }
+    // let amount = localStorage.getItem("amount");
+    // if(amount !=null) {
+    //     document.querySelector("#amount").innerText = amount;
+    // } else {
+    //     localStorage.setItem("amount", 0); //value setting to key ->0.  look in application in developer tools
+    // }
 
     //fetch data from API
     fetch(url).then((response) => {
@@ -40,18 +41,16 @@ function getData(type) {  //type is going to be bug or fish
                 let bug = result[i];
                 let name = bug.name["name-USen"];
                 let price = bug.price;
-                let sellOrSave = price < 800 ? "sell" : "save"; //? is the 'if'. only works if there are two conditions
+                let sellOrSave = price < 800 ? "<div class='sell'>sell</div>" : "<div class='save'>save</div>"; //? is the 'if'. only works if there are two conditions
                 let imageURI = bug["image_uri"]; //because of underscore have to use different syntax
                 //create template string
-                let handleSell = `var currAmountDiv = document.querySelector('#amount'); var currAmount = localStorage.getItem("amount"); localStorage.setItem("amount", currAmount); currAmountDiv.innerText = currAmount;`;
+                //let handleSell = `var currAmountDiv = document.querySelector('#amount'); var currAmount = localStorage.getItem("amount"); localStorage.setItem("amount", currAmount); currAmountDiv.innerText = currAmount;`;
                 let bugDiv = ` 
                 <div class="item">
                     <img src=${imageURI} alt="bug image"/>
                     <div class="name">${name}</div>
-                    <div class="price">${price}</div>
+                    <div class="price">${price} Bells</div><br>
                     <div class="sellOrSave">${sellOrSave}</div>
-                    <button onclick="${handleSell}">sell</button>
-                    <button>save</button>
                 </div>`
                 itemContainer.innerHTML += bugDiv;
             }

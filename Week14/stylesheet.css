@@ -1,13 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600&display=swap");
 
 html {
-    background-color: #253C78;
-    color: #FFF07C;
+    background-color: white;
+    color: #317B22;
 }
 
 h1, h2 {
     text-align: center;
     font-family: 'Zilla Slab', serif;
+    color: #A76F25;
+}
+
+a {
+    color: #9AC2C9;
 }
 
 img {
@@ -19,10 +24,11 @@ img {
     grid-template-columns: auto auto;
     background-color: #FFF07C;
     padding: 10px;
+    grid-gap: 10px;
 }
 
 .grid {
-    background-color: #A76F25;
+    background-color: #253C78;
     border: 1px solid rgba(0,0,0,0.8);
     padding: 20px;
     font-size: 30px;
@@ -31,19 +37,36 @@ img {
 
 .item-container {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
-    background-color: aqua;
-    padding: 10px;
+    grid-template-columns: 32% 32% 32%;
+    padding: 15px;
+    grid-gap: 10px;
 }
 
 .item {
-    background-color: #A76F25;
-    border: 1px solid rgba(0,0,0,0.8);
+    background-color: #253C78;
+    border: 5px solid #9AC2C9;
     padding: 20px;
     font-size: 30px;
     text-align: center;
+    color: #FFF07C;
 }
 
+.name {
+    font-size: medium;
+}
+
+.price {
+    font-size: large;
+}
+
+.sell {
+    color:#317B22;
+    text-shadow: 1px 1px #FFF07C;
+}
+
+.save {
+    font-size: large;
+}
 
 
 
