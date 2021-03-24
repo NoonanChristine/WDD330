@@ -1,5 +1,15 @@
 function getData(type) {  //type is going to be bug or fish
-    let url = "https://acnhapi.com/v1/ + type"
+    let url = "https://acnhapi.com/v1/" + type;
+
+    //local storage -> amount = 0
+
+    let amount = localStorage.getItem("amount");
+    if(amount !=null) {
+        document.querySelector("#amount").innerText = amount;
+    } else {
+        localStorage.setItem("amount", 0); //value setting to key ->0.  look in application in developer tools
+    }
+
     //fetch data from API
     fetch(url).then((response) => {
             if (!response.ok) {
@@ -33,12 +43,15 @@ function getData(type) {  //type is going to be bug or fish
                 let sellOrSave = price < 800 ? "sell" : "save"; //? is the 'if'. only works if there are two conditions
                 let imageURI = bug["image_uri"]; //because of underscore have to use different syntax
                 //create template string
+                let handleSell = `var currAmountDiv = document.querySelector('#amount'); var currAmount = localStorage.getItem("amount"); localStorage.setItem("amount", currAmount); currAmountDiv.innerText = currAmount;`;
                 let bugDiv = ` 
                 <div class="item">
                     <img src=${imageURI} alt="bug image"/>
                     <div class="name">${name}</div>
                     <div class="price">${price}</div>
                     <div class="sellOrSave">${sellOrSave}</div>
+                    <button onclick="${handleSell}">sell</button>
+                    <button>save</button>
                 </div>`
                 itemContainer.innerHTML += bugDiv;
             }
