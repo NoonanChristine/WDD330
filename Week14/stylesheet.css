@@ -60,12 +60,12 @@ img {
 }
 
 .sell {
-    color:#317B22;
-    text-shadow: .75px .75px #FFF07C;
+    color:#FFF07C;
 }
 
 .save {
-    font-size: large;
+    font-size: larger;
+    color: #317B22;
 }
 
 .returnHome {
